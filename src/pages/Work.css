@@ -1,0 +1,175 @@
+/* ── NDA STRIP ── */
+.nda-strip {
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 1.75rem 3rem;
+  text-align: center;
+}
+.nda-strip p { font-size: 0.9rem; color: var(--text-mid); max-width: 720px; margin: 0 auto; line-height: 1.7; }
+.nda-strip strong { color: var(--text); }
+
+/* ── PLATFORM GRID ── */
+section { padding: 6rem 0; }
+
+.platform-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin: 3rem 0;
+}
+
+.platform-card {
+  padding: 2rem 1.5rem;
+  background: var(--bg);
+  position: relative;
+}
+
+.platform-card.internal { background: var(--bg-alt); }
+
+.platform-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+  transform-origin: left;
+}
+
+.platform-card:hover::before { transform: scaleX(1); }
+
+.platform-featured {
+  grid-column: 1 / -1;
+  background: var(--bg-dark) !important;
+}
+
+.platform-featured-inner {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.platform-icon { font-size: 1.5rem; margin-bottom: 1rem; display: block; }
+.platform-featured .platform-icon { margin-bottom: 0; display: inline; }
+
+.platform-name {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.platform-who {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.platform-desc {
+  font-size: 0.82rem;
+  color: var(--text-mid);
+  line-height: 1.6;
+}
+
+/* ── HOW I WORK ── */
+.how-i-work { padding: 6rem 0; }
+
+.how-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.how-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-top: 0.5rem;
+}
+
+.how-card {
+  border-left: 3px solid var(--accent);
+  padding-left: 1.5rem;
+}
+
+.how-card-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+
+.how-card-body {
+  font-size: 0.9rem;
+  color: var(--text-mid);
+  line-height: 1.7;
+}
+
+/* ── METHODOLOGY DARK ── */
+.methodology-dark {
+  background: var(--bg-dark);
+  padding: 6rem 0;
+}
+
+.method-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.method-steps-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.method-step-card {
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 2rem;
+}
+
+.step-num {
+  font-family: var(--serif);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: rgba(200,16,46,0.4);
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+
+.step-title-dark {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--bg);
+  margin-bottom: 0.5rem;
+}
+
+.step-desc-dark {
+  font-size: 0.85rem;
+  color: rgba(250,248,245,0.55);
+  line-height: 1.65;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .platform-grid { grid-template-columns: 1fr 1fr; }
+  .platform-card { border-bottom: 1px solid var(--border); }
+  .how-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .method-intro { grid-template-columns: 1fr; gap: 2rem; }
+  .method-steps-grid { grid-template-columns: 1fr; }
+  .nda-strip { padding: 1.5rem; }
+}

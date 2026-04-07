@@ -1,0 +1,203 @@
+section { padding: 6rem 0; }
+
+/* ── BRIDGE STRIP ── */
+.bridge-strip {
+  background: var(--accent);
+  color: var(--bg);
+  padding: 2.5rem 3rem;
+  text-align: center;
+}
+.bridge-strip p {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-style: italic;
+  font-weight: 400;
+  max-width: 760px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ── BRAND HEADER ── */
+.brand-header {
+  margin-bottom: 3rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.brand-title {
+  font-family: var(--serif);
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.brand-meta {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-lt);
+}
+
+/* ── IMAGE BLOCKS ── */
+.img-block { }
+
+.img-caption-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-top: 1px solid var(--border);
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+}
+
+.img-label {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.img-meta {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-lt);
+}
+
+.three-col-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.img-caption-col {
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--border);
+  margin-top: 0.6rem;
+}
+
+.img-label-sm {
+  font-family: var(--serif);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+
+.img-meta-sm {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-lt);
+}
+
+.click-hint {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-lt);
+  margin-bottom: 2rem;
+}
+
+/* ── BRAND STATS ── */
+.brand-description {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+}
+
+.brand-stat {
+  padding: 1.5rem;
+  border-left: 3px solid var(--accent);
+}
+
+.brand-stat-number {
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.35rem;
+}
+
+.brand-stat-label {
+  font-size: 0.82rem;
+  color: var(--text-mid);
+  line-height: 1.5;
+}
+
+/* ── KOHL'S ── */
+.section-kohls {
+  background: var(--bg-alt);
+  padding: 6rem 0;
+}
+
+/* ── SKILLS TRANSLATION ── */
+.section-dark-fashion {
+  background: var(--bg-dark);
+  padding: 6rem 0;
+}
+
+.translation-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.translation-card {
+  padding: 2.5rem 2rem;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+.translation-card:last-child { border-right: none; }
+
+.translation-from {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-lt);
+  margin-bottom: 0.5rem;
+}
+
+.translation-arrow {
+  font-size: 1.2rem;
+  color: var(--accent);
+  margin: 0.75rem 0;
+}
+
+.translation-to {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--bg);
+  margin-bottom: 0.5rem;
+}
+
+.translation-desc {
+  font-size: 0.82rem;
+  color: rgba(250,248,245,0.5);
+  line-height: 1.6;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .three-col-row { grid-template-columns: 1fr 1fr; }
+  .brand-description { grid-template-columns: 1fr; }
+  .translation-grid { grid-template-columns: 1fr 1fr; }
+  .translation-card { border-bottom: 1px solid rgba(255,255,255,0.08); }
+}
+
+@media (max-width: 600px) {
+  .three-col-row { grid-template-columns: 1fr; }
+  .translation-grid { grid-template-columns: 1fr; }
+}
