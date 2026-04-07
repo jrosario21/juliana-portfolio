@@ -14,7 +14,7 @@ export default function Home() {
             <em>empowered by AI.</em>
           </h1>
           <p className="hero-sub">
-            I bridge the gap between human-centered design and AI-driven development — leading product from concept to launch without writing a line of code. Formerly in fashion. Now building infrastructure software for the internet.
+            I spent a decade designing clothes for millions of people. Then I fell in love with the invisible infrastructure that powers modern life. Now I build software the same way I built fashion — starting with the human wearing it.
           </p>
           <div className="hero-actions">
             <Link to="/work" className="btn-primary">See My Work</Link>
