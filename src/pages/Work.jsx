@@ -77,13 +77,16 @@ export default function Work() {
 
       {/* NDA NOTE */}
       <div className="nda-strip">
-        <p><strong>A note on what's shown here:</strong> The full platform — Operator, Provider, Management, Install, and Partner Portals — is proprietary and under NDA. What I can share are the public-facing city network websites, which are live, fully functional, and connected to the same underlying infrastructure. Each one is the customer-facing surface of a complete open-access fiber deployment: sign-up, ISP selection, install scheduling, and ongoing account management all live here.</p>
+        <p><strong>A note on what's shown here:</strong> The full platform — Operator, Provider, Management, Install, and Partner Portals — is proprietary and under NDA. What I can share are the public-facing city network websites, which are live, fully functional, and connected to the same underlying infrastructure.</p>
       </div>
 
       {/* PLATFORM OVERVIEW */}
       <section>
         <div className="container">
-          <p className="section-eyebrow">The Full Platform</p>
+          <div className="section-banner-wrap">
+            <img src="/EntpntWebImage_banner2.png" alt="EntryPoint Networks" className="section-banner" />
+          </div>
+          <p className="section-eyebrow" style={{ marginTop: '2.5rem' }}>The Full Platform</p>
           <h2 className="section-title">Seven portals.<br />One <em>connected system.</em></h2>
           <p className="section-body">Each portal serves a distinct user within the same open-access fiber infrastructure — from city residents signing up for service to field technicians provisioning hardware. Designing across all seven simultaneously, with consistent logic and shared components, is the core of the work.</p>
 
@@ -113,6 +116,69 @@ export default function Work() {
         </div>
       </section>
 
+      {/* LIVE DEPLOYMENTS */}
+      <section className="section-alt">
+        <div className="container">
+          <p className="section-eyebrow">Live Deployments</p>
+          <h2 className="section-title">Real cities.<br /><em>Real infrastructure.</em></h2>
+          <p className="section-body">These are fully live, publicly accessible city fiber network websites — each built on the same underlying platform and design system. Residents use these to discover the network, choose an ISP, and sign up for service.</p>
+
+          <div className="deployments-grid">
+            <div className="deployment-card">
+              <div className="deployment-img-wrap">
+                <img src="/orangeburg_fiber_banner.png" alt="Orangeburg Fiber" className="deployment-img" />
+              </div>
+              <div className="deployment-info">
+                <span className="work-card-tag">Live · Orangeburg, SC</span>
+                <h3>Orangeburg Fiber</h3>
+                <p>The city of Orangeburg's open-access fiber network — serving residents with multi-ISP choice, self-provisioning, and a city-branded experience from sign-up through account management.</p>
+                <a href="https://www.orangeburgfiber.net" target="_blank" rel="noopener noreferrer" className="deployment-link">Visit orangeburgfiber.net →</a>
+              </div>
+            </div>
+
+            <div className="deployment-card">
+              <div className="deployment-img-wrap">
+                <img src="/jamestownfiber_banner.png" alt="Jamestown BPU Fiber" className="deployment-img" />
+              </div>
+              <div className="deployment-info">
+                <span className="work-card-tag">Live · Jamestown, NY</span>
+                <h3>Jamestown BPU Fiber</h3>
+                <p>Jamestown's municipally-owned fiber network, operated in partnership with the Board of Public Utilities — connecting residents to competitive ISPs on a city-owned open-access infrastructure.</p>
+                <a href="https://www.jamestownbpufiber.com" target="_blank" rel="noopener noreferrer" className="deployment-link">Visit jamestownbpufiber.com →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ELEMENTS */}
+      <section className="section-alt elements-section">
+        <div className="container">
+          <div className="section-banner-wrap">
+            <img src="/elements_Banner.png" alt="Elements" className="section-banner" />
+          </div>
+          <div style={{ marginTop: '2.5rem' }}>
+            <p className="section-eyebrow">Contract Work · Elements</p>
+            <h2 className="section-title" style={{ fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)' }}>Design libraries<br />built for <em>scale.</em></h2>
+            <p style={{ fontSize: '0.95rem', color: 'var(--text-mid)', lineHeight: 1.75, maxWidth: '560px' }}>Contracted to organize and build out component libraries and design systems — creating consistency across Android, iOS, and marketing surfaces.</p>
+          </div>
+          <div className="elements-grid">
+            <div className="elements-img-wrap">
+              <img src="/elements_Android.png" alt="Elements Android Design Library" />
+              <p className="elements-caption">Android</p>
+            </div>
+            <div className="elements-img-wrap">
+              <img src="/elements_iOS.png" alt="Elements iOS Design Library" />
+              <p className="elements-caption">iOS</p>
+            </div>
+            <div className="elements-img-wrap">
+              <img src="/elements_Marketing.png" alt="Elements Marketing Components" />
+              <p className="elements-caption">Marketing</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* HOW I WORK */}
       <section className="how-i-work">
         <div className="container">
@@ -120,8 +186,7 @@ export default function Work() {
             <div>
               <p className="section-eyebrow">The Approach</p>
               <h2 className="section-title">Design is now<br /><em>requirements fluency.</em></h2>
-              <p className="section-body">The most valuable design skill in an AI-first world isn't knowing how to use Figma faster. It's knowing how to define what needs to be built with enough precision that an agent can execute it — and enough judgment to recognize when it hasn't.</p>
-              <p style={{ fontSize: '1rem', color: 'var(--text-mid)', lineHeight: 1.85, marginTop: '1.25rem' }}>The traditional design process — research, wireframe, prototype, handoff — assumed humans were doing the building. That assumption no longer holds. What matters now is the quality of your thinking upstream: how clearly you can articulate a goal, map a user path, and encode your design intent into rules an agent will follow.</p>
+              <p className="section-body">The most valuable design skill in an AI-first world isn't Figma speed. It's knowing how to define what needs to be built with enough precision that an agent can execute it — and enough judgment to recognize when it hasn't.</p>
             </div>
             <div className="how-cards">
               {[
@@ -148,8 +213,7 @@ export default function Work() {
               <h2 style={{ fontFamily: 'var(--serif)', fontSize: 'clamp(2rem,3vw,2.6rem)', fontWeight: 700, color: 'var(--bg)', lineHeight: 1.2, marginBottom: '1.25rem' }}>
                 An AI-governed<br /><em style={{ color: 'var(--accent-lt)' }}>product pipeline.</em>
               </h2>
-              <p style={{ fontSize: '1rem', color: 'rgba(250,248,245,0.6)', lineHeight: 1.85, marginBottom: '1.5rem' }}>This isn't "using AI to go faster." It's a structured methodology where requirements flow into governed PRDs, and agents with defined rules handle the build — maintaining visual consistency, design logic, and scope without manual Figma handoffs. The PRD is the design artifact. The governance rules are the design system.</p>
-              <p style={{ fontSize: '1rem', color: 'rgba(250,248,245,0.6)', lineHeight: 1.85 }}>A seven-portal platform, shipped by two people, live in multiple cities. This is what that looks like in practice.</p>
+              <p style={{ fontSize: '1rem', color: 'rgba(250,248,245,0.6)', lineHeight: 1.85, marginBottom: '1.5rem' }}>Requirements flow into governed PRDs. Agents with defined rules handle the build. The PRD is the design artifact. The governance rules are the design system. A seven-portal platform, shipped by two people, live in multiple cities.</p>
             </div>
             <div className="method-steps-grid">
               {methodSteps.map(s => (
