@@ -13,10 +13,10 @@ export default function Nav() {
 
       <ul className="nav-links">
         <li>
-          <Link to="/#story" className={location.hash === '#story' ? 'active' : ''}>Story</Link>
+          <Link to="/#story" className={location.pathname === '/' && location.hash === '#story' ? 'active' : ''}>Story</Link>
         </li>
         <li>
-          <Link to="/#methodology" className={location.hash === '#methodology' ? 'active' : ''}>Approach</Link>
+          <Link to="/#methodology" className={location.pathname === '/' && location.hash === '#methodology' ? 'active' : ''}>Approach</Link>
         </li>
         <li>
           <NavLink to="/work" className={({ isActive }) => isActive ? 'active' : ''}>Work</NavLink>
@@ -25,14 +25,17 @@ export default function Nav() {
           <NavLink to="/fashion" className={({ isActive }) => isActive ? 'active' : ''}>Fashion</NavLink>
         </li>
         <li>
-          <Link to="/#tools" className={location.hash === '#tools' ? 'active' : ''}>Skills</Link>
+          <Link to="/#tools" className={location.pathname === '/' && location.hash === '#tools' ? 'active' : ''}>Skills</Link>
         </li>
         <li>
-          <Link to="/#about" className={location.hash === '#about' ? 'active' : ''}>About</Link>
+          <Link to="/#about" className={location.pathname === '/' && location.hash === '#about' ? 'active' : ''}>About</Link>
         </li>
       </ul>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <NavLink to="/ask" className={({ isActive }) => isActive ? 'nav-askme nav-askme-active' : 'nav-askme'}>
+          ✦ Ask Me
+        </NavLink>
         <a href="/JulianaRosario_Resume.pdf" download className="nav-resume">Resume ↓</a>
         <a href="mailto:julianamrosario@gmail.com" className="nav-cta">Let's Talk</a>
       </div>
