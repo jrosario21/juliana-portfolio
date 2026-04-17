@@ -147,8 +147,16 @@ export default async function handler(req, res) {
     const data = await response.json()
 
     if (!response.ok) {
-      console.error('Anthropic error:', data)
-      return res.status(500).json({ error: 'API error' })
+      console.error('Anthropic error:', JSON.stringify(data))
+      return res.status(500).json({
+        error: 'API error',
+        details: data.error?.message || data.type || 'unknown'
+      })
+    }
+
+    if (!data.content || !data.content[0] || !data.content[0].text) {
+      console.error('Unexpected response shape:', JSON.stringify(data))
+      return res.status(500).json({ error: 'Unexpected response from AI' })
     }
 
     return res.status(200).json({ reply: data.content[0].text })

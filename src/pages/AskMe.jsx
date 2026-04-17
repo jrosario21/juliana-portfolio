@@ -4,7 +4,7 @@ import './AskMe.css'
 const SUGGESTED = [
   'What has Juliana built?',
   'How does she use AI in her work?',
-  'What\'s her background in fashion?',
+  "What's her background in fashion?",
   'What kind of roles is she looking for?',
   'How does she work with developers?',
 ]
@@ -42,10 +42,32 @@ export default function AskMe() {
           })),
         }),
       })
+
       const data = await res.json()
+
+      if (!res.ok) {
+        const errDetail = data.error || data.details || `HTTP ${res.status}`
+        setMessages(prev => [...prev, {
+          role: 'assistant',
+          text: `Something went wrong on my end (${errDetail}). Please try again or reach Juliana directly at julianamrosario@gmail.com.`
+        }])
+        return
+      }
+
+      if (!data.reply) {
+        setMessages(prev => [...prev, {
+          role: 'assistant',
+          text: "I didn't get a response. Please try again in a moment."
+        }])
+        return
+      }
+
       setMessages(prev => [...prev, { role: 'assistant', text: data.reply }])
-    } catch {
-      setMessages(prev => [...prev, { role: 'assistant', text: "Sorry, something went wrong. Please try again." }])
+    } catch (err) {
+      setMessages(prev => [...prev, {
+        role: 'assistant',
+        text: "Couldn't reach the server — check your connection and try again."
+      }])
     } finally {
       setLoading(false)
     }
