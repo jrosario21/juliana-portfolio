@@ -640,6 +640,83 @@
   border-radius: 50%;
 }
 
+/* Vinyl record */
+.v2-sc-vinyl {
+  top: 230px;
+  left: 0%;
+  width: 110px;
+  height: 110px;
+  transform: rotate(-15deg) translateY(var(--ty, 0));
+  opacity: 0.92;
+}
+.v2-vinyl-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 8px 20px rgba(0,0,0,0.35));
+  animation: v2-spin 18s linear infinite;
+}
+.v2-sc-vinyl:hover .v2-vinyl-svg { animation-play-state: paused; }
+@keyframes v2-spin { to { transform: rotate(360deg); } }
+
+/* Timeline card */
+.v2-sc-timeline {
+  top: 200px;
+  left: 14%;
+  width: 280px;
+  background: var(--ink);
+  color: #fff;
+  padding: 20px 22px;
+  transform: rotate(-2deg) translateY(var(--ty, 0));
+  box-shadow: 0 20px 40px -12px rgba(0,0,0,.4);
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 11px;
+}
+.v2-timeline-title {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--wash-a);
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+.v2-timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.v2-tl-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.v2-tl-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.v2-tl-dot-accent { background: var(--accent); }
+.v2-tl-row > div {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.v2-tl-year {
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  font-size: 10px;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+}
+.v2-tl-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.4;
+}
+
 /* About center text */
 .v2-about-center {
   position: relative;
@@ -691,6 +768,16 @@
   max-width: 44ch;
   margin-left: auto;
   margin-right: auto;
+}
+.v2-about-p3 {
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  max-width: 44ch;
+  margin: 18px auto 0;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
 }
 
 /* ── CONTACT ── */
@@ -831,6 +918,8 @@
     display: block;
     transform: none !important;
   }
+  .v2-sc-vinyl { width: 80px; height: 80px; }
+  .v2-sc-timeline { width: 100%; }
   .v2-about-center { margin-top: 40px; }
   .v2-signature { font-size: 48px; }
 

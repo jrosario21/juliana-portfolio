@@ -24,9 +24,7 @@ export default function Nav() {
         </div>
 
         <div className="v2-nav-right">
-          <NavLink to="/ask" className={({ isActive }) => isActive ? 'v2-nav-askme active' : 'v2-nav-askme'} onClick={close}>
-            ✦ Ask Me
-          </NavLink>
+          <a href="/JulianaRosario_Resume.pdf" download className="v2-nav-resume">Resume ↓</a>
         </div>
 
         <button
@@ -46,7 +44,6 @@ export default function Nav() {
             <Link to="/#about" onClick={close}>About</Link>
             <Link to="/#contact" onClick={close}>Contact</Link>
             <div className="v2-nav-mobile-actions">
-              <NavLink to="/ask" className="v2-nav-askme" onClick={close}>✦ Ask Me</NavLink>
               <a href="/JulianaRosario_Resume.pdf" download onClick={close}>Resume ↓</a>
             </div>
           </div>

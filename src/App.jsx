@@ -5,7 +5,12 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import Work from './pages/Work'
 import Fashion from './pages/Fashion'
-import AskMe from './pages/AskMe'
+import Orangeburg from './pages/projects/Orangeburg'
+import Jamestown from './pages/projects/Jamestown'
+import SevenPortal from './pages/projects/SevenPortal'
+import Elements from './pages/projects/Elements'
+import StyleCo from './pages/projects/StyleCo'
+import JLo from './pages/projects/JLo'
 
 function ScrollToHash() {
   const { pathname, hash } = useLocation()
@@ -34,7 +39,12 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/work" element={<Work />} />
         <Route path="/fashion" element={<Fashion />} />
-        <Route path="/ask" element={<AskMe />} />
+        <Route path="/work/orangeburg" element={<Orangeburg />} />
+        <Route path="/work/jamestown" element={<Jamestown />} />
+        <Route path="/work/seven-portal" element={<SevenPortal />} />
+        <Route path="/work/elements" element={<Elements />} />
+        <Route path="/work/styleco" element={<StyleCo />} />
+        <Route path="/work/kohls" element={<JLo />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Footer />

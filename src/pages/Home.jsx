@@ -10,12 +10,12 @@ const TAGLINES = [
 ]
 
 const WORK_ITEMS = [
-  { num: '01', plain: 'Orangeburg ', serif: 'Fiber',      href: '/work',    img: '/orangeburg_fiber_banner.png',  color: '#E63946', label: 'Orangeburg Fiber',             meta: ['ENTRYPOINT', 'CITY NETWORK · LIVE', '2024'] },
-  { num: '02', plain: 'Jamestown ', serif: 'BPU Fiber',   href: '/work',    img: '/jamestownfiber_banner.png',    color: '#CDEAE1', label: 'Jamestown BPU Fiber',          meta: ['ENTRYPOINT', 'CITY NETWORK · LIVE', '2024'] },
-  { num: '03', plain: 'Seven-Portal ', serif: 'Platform', href: '/work',    img: '/EntpntWebImage_banner2.png',   color: '#FFD2B8', label: 'Seven-Portal Platform',        meta: ['ENTRYPOINT', 'B2B + B2C · UNDER NDA', '2023–'] },
-  { num: '04', plain: 'Ele', serif: 'ments',              href: '/work',    img: '/elements_Banner.png',          color: '#F7E9B0', label: 'Elements — Design Libraries',  meta: ['CONTRACT', 'DESIGN SYSTEM · iOS + ANDROID', '2023'] },
-  { num: '05', plain: 'Style ', serif: '& Co.',           href: '/fashion', img: '/styleco_spring_24_1.jpg',      color: '#F4A7B9', label: "Style & Co. · Macy's",          meta: ["MACY'S", 'SR. MANAGER OF DESIGN', '2019–23'] },
-  { num: '06', plain: "Kohl's ", serif: '— JLo · Vera · Dana Buchman', href: '/fashion', img: '/jlo_spring16_board.png', color: '#0F0F10', label: "Kohl's · JLo · Vera · Dana Buchman", meta: ["KOHL'S", 'PRIVATE & EXCLUSIVE BRANDS', '2015–19'] },
+  { num: '01', plain: 'Orangeburg ', serif: 'Fiber',      href: '/work/orangeburg',    img: '/orangeburg_fiber_banner.png',  color: '#E63946', label: 'Orangeburg Fiber',             meta: ['ENTRYPOINT', 'CITY NETWORK · LIVE', '2024'] },
+  { num: '02', plain: 'Jamestown ', serif: 'BPU Fiber',   href: '/work/jamestown',     img: '/jamestownfiber_banner.png',    color: '#CDEAE1', label: 'Jamestown BPU Fiber',          meta: ['ENTRYPOINT', 'CITY NETWORK · LIVE', '2024'] },
+  { num: '03', plain: 'Seven-Portal ', serif: 'Platform', href: '/work/seven-portal',  img: '/EntpntWebImage_banner2.png',   color: '#FFD2B8', label: 'Seven-Portal Platform',        meta: ['ENTRYPOINT', 'B2B + B2C · UNDER NDA', '2023–'] },
+  { num: '04', plain: 'Ele', serif: 'ments',              href: '/work/elements',      img: '/elements_Banner.png',          color: '#F7E9B0', label: 'Elements — Design Libraries',  meta: ['CONTRACT', 'DESIGN SYSTEM · iOS + ANDROID', '2023'] },
+  { num: '05', plain: 'Style ', serif: '& Co.',           href: '/work/styleco',       img: '/styleco_spring_24_1.jpg',      color: '#F4A7B9', label: "Style & Co. · Macy's",          meta: ["MACY'S", 'SR. MANAGER OF DESIGN', '2019–23'] },
+  { num: '06', plain: "Kohl's ", serif: '— JLo · Vera · Dana Buchman', href: '/work/kohls', img: '/jlo_spring16_board.png', color: '#0F0F10', label: "Kohl's · JLo · Vera · Dana Buchman", meta: ["KOHL'S", 'PRIVATE & EXCLUSIVE BRANDS', '2015–19'] },
 ]
 
 const APPROACH = [
@@ -328,14 +328,73 @@ export default function Home() {
             Human-<br />Centered<br />· always ·
           </div>
 
+          {/* ── VINYL RECORD ── */}
+          <div className="v2-scrap v2-sc-vinyl" ref={el => scrapsRef.current[5] = el} aria-hidden="true">
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" className="v2-vinyl-svg">
+              <circle cx="60" cy="60" r="58" fill="#1a1a1c"/>
+              <circle cx="60" cy="60" r="54" fill="none" stroke="#2a2a2e" strokeWidth="0.5"/>
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#222224" strokeWidth="0.4"/>
+              <circle cx="60" cy="60" r="46" fill="none" stroke="#2a2a2e" strokeWidth="0.4"/>
+              <circle cx="60" cy="60" r="42" fill="none" stroke="#222224" strokeWidth="0.5"/>
+              <circle cx="60" cy="60" r="38" fill="none" stroke="#2a2a2e" strokeWidth="0.4"/>
+              <circle cx="60" cy="60" r="34" fill="none" stroke="#222224" strokeWidth="0.4"/>
+              <circle cx="60" cy="60" r="30" fill="none" stroke="#2a2a2e" strokeWidth="0.5"/>
+              <circle cx="60" cy="60" r="26" fill="none" stroke="#222224" strokeWidth="0.4"/>
+              <circle cx="60" cy="60" r="16" fill="#E63946"/>
+              <circle cx="60" cy="60" r="13" fill="#c8102e"/>
+              <text x="60" y="57" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="5" fontFamily="var(--mono)" letterSpacing="0.3">JULIANA</text>
+              <text x="60" y="64" textAnchor="middle" fill="rgba(255,255,255,0.5)" fontSize="3.5" fontFamily="var(--mono)" letterSpacing="0.2">ROSARIO</text>
+              <circle cx="60" cy="60" r="3" fill="#1a1a1c"/>
+              <ellipse cx="44" cy="36" rx="3" ry="1.5" fill="rgba(255,255,255,0.08)" transform="rotate(-40 44 36)"/>
+            </svg>
+          </div>
+
+          {/* ── TIMELINE CARD ── */}
+          <div className="v2-scrap v2-sc-timeline" ref={el => scrapsRef.current[6] = el}>
+            <div className="v2-timeline-title">One thread runs through it.</div>
+            <div className="v2-timeline-list">
+              <div className="v2-tl-row">
+                <span className="v2-tl-dot" />
+                <div>
+                  <span className="v2-tl-year">2013–2023</span>
+                  <span className="v2-tl-label">Fashion Designer → Sr. Manager of Design · Kohl's &amp; Macy's</span>
+                </div>
+              </div>
+              <div className="v2-tl-row">
+                <span className="v2-tl-dot" />
+                <div>
+                  <span className="v2-tl-year">2018</span>
+                  <span className="v2-tl-label">UX/UI Certification · Pratt Institute</span>
+                </div>
+              </div>
+              <div className="v2-tl-row">
+                <span className="v2-tl-dot" />
+                <div>
+                  <span className="v2-tl-year">2022</span>
+                  <span className="v2-tl-label">Digital Product Work · Financial systems UI</span>
+                </div>
+              </div>
+              <div className="v2-tl-row">
+                <span className="v2-tl-dot v2-tl-dot-accent" />
+                <div>
+                  <span className="v2-tl-year">2023–Now</span>
+                  <span className="v2-tl-label">AI Product Lead · EntryPoint Networks</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div className="v2-about-center">
             <div className="v2-about-role">Hello — I'm <em>Juliana</em></div>
             <h3 className="v2-signature">Juliana Rosario</h3>
             <p className="v2-about-p1">
-              Product lead, former fashion designer, and a mom to a baby boy in the NY/NJ area. My background is unconventional — and it's become my biggest professional advantage.
+              Product lead, former fashion designer, and a mom — based in NY/NJ with an unconventional path that turned out to be exactly the right one.
             </p>
             <p className="v2-about-p2">
-              I spent a decade in physical product — fashion, retail, global manufacturing — before moving into digital product and AI-native development. That wasn't a pivot. It was ten years of learning how to build things people actually want, at scale, under pressure, to a hard deadline. Fashion just happened to be the classroom.
+              A decade in physical product: fashion, retail, global manufacturing. Then digital. Then AI. It was never a pivot so much as a natural progression — building things people actually want, under pressure, at scale. The industry changed. The instincts didn't.
+            </p>
+            <p className="v2-about-p3">
+              I love music, deeply. I dance for fun. I travel. I share my home with a very opinionated mini poodle named Domino. I'm fascinated by psychology — why people make the choices they make, what drives them, what they're really asking for. I organize obsessively and find genuine joy in efficiency. And I believe in personal style not as aesthetics, but as authorship. What you put into the world says something. I like mine to mean something.
             </p>
           </div>
         </div>
