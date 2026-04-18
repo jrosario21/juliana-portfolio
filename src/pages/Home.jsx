@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import './Home.css'
 
 const TAGLINES = [
-  `I spent a decade designing clothes for millions of people — then fell for the invisible infrastructure behind modern life. Today I build software the same way I built fashion: <em>starting with the human wearing it.</em>`,
+  `I used to design what people wore. Now I design what they use. Different medium, same question: <em>does this actually fit the person it's made for?</em>`,
   `Ten years of apparel at scale taught me one thing — design only matters if it works on a <em>real body, on a real day.</em> Now I bring that same discipline to AI-native product work.`,
   `I make products for the person who is tired, distracted, and already doing three other things. Fashion was the <em>classroom.</em> Software is the practice.`,
   `Former fashion designer, current AI product lead. Same job description — <em>build things people actually want, at scale, under pressure, to a hard deadline.</em> Only the medium changed.`
