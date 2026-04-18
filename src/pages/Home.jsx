@@ -1,312 +1,369 @@
+import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './Home.css'
 
+const TAGLINES = [
+  `I spent a decade designing clothes for millions of people — then fell for the invisible infrastructure behind modern life. Today I build software the same way I built fashion: <em>starting with the human wearing it.</em>`,
+  `Ten years of apparel at scale taught me one thing — design only matters if it works on a <em>real body, on a real day.</em> Now I bring that same discipline to AI-native product work.`,
+  `I make products for the person who is tired, distracted, and already doing three other things. Fashion was the <em>classroom.</em> Software is the practice.`,
+  `Former fashion designer, current AI product lead. Same job description — <em>build things people actually want, at scale, under pressure, to a hard deadline.</em> Only the medium changed.`
+]
+
+const WORK_ITEMS = [
+  { num: '01', plain: 'Orangeburg ', serif: 'Fiber',      href: '/work',    img: '/orangeburg_fiber_banner.png',  color: '#E63946', label: 'Orangeburg Fiber',             meta: ['ENTRYPOINT', 'CITY NETWORK · LIVE', '2024'] },
+  { num: '02', plain: 'Jamestown ', serif: 'BPU Fiber',   href: '/work',    img: '/jamestownfiber_banner.png',    color: '#CDEAE1', label: 'Jamestown BPU Fiber',          meta: ['ENTRYPOINT', 'CITY NETWORK · LIVE', '2024'] },
+  { num: '03', plain: 'Seven-Portal ', serif: 'Platform', href: '/work',    img: '/EntpntWebImage_banner2.png',   color: '#FFD2B8', label: 'Seven-Portal Platform',        meta: ['ENTRYPOINT', 'B2B + B2C · UNDER NDA', '2023–'] },
+  { num: '04', plain: 'Ele', serif: 'ments',              href: '/work',    img: '/elements_Banner.png',          color: '#F7E9B0', label: 'Elements — Design Libraries',  meta: ['CONTRACT', 'DESIGN SYSTEM · iOS + ANDROID', '2023'] },
+  { num: '05', plain: 'Style ', serif: '& Co.',           href: '/fashion', img: '/styleco_spring_24_1.jpg',      color: '#F4A7B9', label: "Style & Co. · Macy's",          meta: ["MACY'S", 'SR. MANAGER OF DESIGN', '2019–23'] },
+  { num: '06', plain: "Kohl's ", serif: '— JLo · Vera · Dana Buchman', href: '/fashion', img: '/jlo_spring16_board.png', color: '#0F0F10', label: "Kohl's · JLo · Vera · Dana Buchman", meta: ["KOHL'S", 'PRIVATE & EXCLUSIVE BRANDS', '2015–19'] },
+]
+
+const APPROACH = [
+  { num: '01', title: 'Define the goal & MVP',                            src: 'Crisp success + scope' },
+  { num: '02', title: 'Map the user path in plain language',              src: 'Every decision + edge case' },
+  { num: '03', title: 'AI refinement & PRD',                             src: 'Edit ruthlessly' },
+  { num: '04', title: 'Agent-governed build under a defined ruleset',    src: 'Consistency by rule, not by hand' },
+  { num: '05', title: 'Review is the new design skill',                  src: 'Judgment > speed' },
+]
+
 export default function Home() {
+  const [taglineIdx, setTaglineIdx] = useState(0)
+  const [preview, setPreview] = useState({ show: false, img: '', color: '', label: '', x: 0, y: 0 })
+  const canvasRef = useRef(null)
+  const heroRef = useRef(null)
+  const scrapsRef = useRef([])
+
+  // ── Watercolor canvas effect ──
+  useEffect(() => {
+    const canvas = canvasRef.current
+    const hero = heroRef.current
+    if (!canvas || !hero) return
+    const ctx = canvas.getContext('2d')
+    let W = 0, H = 0
+    const dpr = Math.min(window.devicePixelRatio || 1, 2)
+    const blobs = []
+
+    function resize() {
+      const r = hero.getBoundingClientRect()
+      W = r.width; H = r.height
+      canvas.width = W * dpr; canvas.height = H * dpr
+      canvas.style.width = W + 'px'; canvas.style.height = H + 'px'
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+    }
+    resize()
+    window.addEventListener('resize', resize)
+
+    let lastX = null, lastY = null, lastT = 0
+
+    function onMove(e) {
+      const r = hero.getBoundingClientRect()
+      const x = e.clientX - r.left
+      const y = e.clientY - r.top
+      const now = performance.now()
+      if (lastX !== null) {
+        const dx = x - lastX, dy = y - lastY
+        const dist = Math.hypot(dx, dy)
+        if (dist > 6 && now - lastT > 16) {
+          const steps = Math.min(4, Math.max(1, Math.floor(dist / 18)))
+          for (let i = 0; i < steps; i++) {
+            const t = i / steps
+            blobs.push({
+              x: lastX + dx * t + (Math.random() - .5) * 10,
+              y: lastY + dy * t + (Math.random() - .5) * 10,
+              r: 60 + Math.random() * 80,
+              born: now,
+              life: 2200 + Math.random() * 1400,
+              hueShift: (Math.random() - .5) * 8,
+            })
+          }
+          lastT = now
+        }
+      }
+      lastX = x; lastY = y
+    }
+    function onLeave() { lastX = null; lastY = null }
+
+    hero.addEventListener('pointermove', onMove)
+    hero.addEventListener('pointerleave', onLeave)
+
+    let raf
+    function draw() {
+      const now = performance.now()
+      ctx.clearRect(0, 0, W, H)
+      for (let i = blobs.length - 1; i >= 0; i--) {
+        const b = blobs[i]
+        const age = (now - b.born) / b.life
+        if (age >= 1) { blobs.splice(i, 1); continue }
+        const alpha = Math.sin(age * Math.PI) * 0.45
+        const r = b.r * (0.6 + age * 0.9)
+        const g = ctx.createRadialGradient(b.x, b.y, r * 0.1, b.x, b.y, r)
+        g.addColorStop(0, `hsla(${354 + b.hueShift},72%,55%,${alpha * 0.55})`)
+        g.addColorStop(0.5, `hsla(${348 + b.hueShift},65%,50%,${alpha * 0.25})`)
+        g.addColorStop(1, `hsla(${344 + b.hueShift},60%,45%,0)`)
+        ctx.fillStyle = g
+        ctx.beginPath()
+        for (let s = 0; s <= 24; s++) {
+          const a = (s / 24) * Math.PI * 2
+          const wobble = 1 + Math.sin(a * 3 + b.born * 0.002) * 0.08 + Math.sin(a * 5 + b.born * 0.003) * 0.05
+          const px = b.x + Math.cos(a) * r * wobble
+          const py = b.y + Math.sin(a) * r * wobble
+          s === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py)
+        }
+        ctx.closePath(); ctx.fill()
+        if (age < 0.4) {
+          ctx.fillStyle = `hsla(356,78%,50%,${alpha * 0.2})`
+          ctx.beginPath()
+          ctx.arc(b.x + Math.sin(b.born) * r * 0.2, b.y + Math.cos(b.born) * r * 0.2, r * 0.25, 0, Math.PI * 2)
+          ctx.fill()
+        }
+      }
+      raf = requestAnimationFrame(draw)
+    }
+    raf = requestAnimationFrame(draw)
+
+    return () => {
+      window.removeEventListener('resize', resize)
+      hero.removeEventListener('pointermove', onMove)
+      hero.removeEventListener('pointerleave', onLeave)
+      cancelAnimationFrame(raf)
+    }
+  }, [])
+
+  // ── Parallax on collage scraps ──
+  useEffect(() => {
+    const scraps = scrapsRef.current.filter(Boolean)
+    const about = document.querySelector('.v2-about')
+    if (!about || !scraps.length) return
+    function onScroll() {
+      const r = about.getBoundingClientRect()
+      if (r.bottom < 0 || r.top > window.innerHeight) return
+      const progress = (window.innerHeight - r.top) / (window.innerHeight + r.height)
+      scraps.forEach((s, i) => {
+        if (!s) return
+        const amt = (progress - .5) * 20 * (i % 2 === 0 ? 1 : -1)
+        s.style.setProperty('--ty', amt + 'px')
+      })
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  function handleWorkEnter(e, item) {
+    setPreview({ show: true, img: item.img, color: item.color, label: item.label, x: e.clientX, y: e.clientY })
+  }
+  function handleWorkMove(e) {
+    setPreview(p => ({ ...p, x: e.clientX, y: e.clientY }))
+  }
+  function handleWorkLeave() {
+    setPreview(p => ({ ...p, show: false }))
+  }
+
   return (
-    <>
-      {/* HERO */}
-      <section id="hero">
-        <div className="hero-left">
-          <p className="hero-eyebrow">AI Product Lead &nbsp;·&nbsp; Human-Centered Design &nbsp;·&nbsp; NY / NJ</p>
-          <h1 className="hero-headline">
-            Building products<br />
-            for humans,<br />
-            <em>empowered by AI.</em>
-          </h1>
-          <p className="hero-sub">
-            I spent a decade designing clothes for millions of people. Then I fell in love with the invisible infrastructure that powers modern life. Now I build software the same way I built fashion — starting with the human wearing it.
+    <main className="v2-home">
+
+      {/* ── HERO ── */}
+      <header className="v2-hero" id="top" ref={heroRef}>
+        <div className="v2-wash" />
+        <canvas className="v2-canvas" ref={canvasRef} />
+        <div className="v2-hero-grid" />
+
+        <div className="v2-hero-top">
+          <div className="v2-kicker">
+            <span className="v2-kicker-idx">N° 001</span>
+            <span>Portfolio</span>
+            <span>MMXXVI</span>
+          </div>
+          <p
+            className="v2-tagline"
+            dangerouslySetInnerHTML={{ __html: TAGLINES[taglineIdx] }}
+          />
+          <div className="v2-badge-wrap">
+            <span className="v2-hero-badge">● Open to what's next</span>
+            <button
+              className="v2-cycle-btn"
+              onClick={() => setTaglineIdx(i => (i + 1) % TAGLINES.length)}
+              title="Try a different intro"
+            >↻ cycle intro</button>
+          </div>
+        </div>
+
+        <h1 className="v2-hero-name" aria-label="Juliana Rosario">
+          <span className="v2-name-row">
+            <span>JULIA</span><span className="v2-name-serif">na</span>
+          </span>
+          <span className="v2-name-row">
+            <span className="v2-name-outline">ROSARI</span><span className="v2-name-serif">o</span>
+          </span>
+        </h1>
+
+        <div className="v2-hero-foot">
+          <div className="v2-foot-cell">
+            <label>Currently</label>
+            <strong>AI Product Lead, <em>EntryPoint Networks</em></strong>
+          </div>
+          <div className="v2-foot-cell">
+            <label>Previously</label>
+            <strong>Sr. Manager of Design · Macy's &amp; Kohl's · 10 yrs</strong>
+          </div>
+          <div className="v2-foot-cell">
+            <label>Focus</label>
+            <strong>AI-governed product pipelines, B2B &amp; B2C SaaS, human-centered design</strong>
+          </div>
+        </div>
+      </header>
+
+      {/* ── MARQUEE ── */}
+      <div className="v2-marquee">
+        <div className="v2-marquee-track" aria-hidden="true">
+          {[
+            'AI PRODUCT DEVELOPMENT','HUMAN-CENTERED DESIGN','B2B & B2C SAAS',
+            'PROTOTYPING-FIRST','DESIGN SYSTEMS AT SCALE','FASHION → PRODUCT',
+            'AI PRODUCT DEVELOPMENT','HUMAN-CENTERED DESIGN','B2B & B2C SAAS',
+            'PROTOTYPING-FIRST','DESIGN SYSTEMS AT SCALE','FASHION → PRODUCT',
+          ].map((t, i) => <span key={i}>{t}</span>)}
+        </div>
+      </div>
+
+      {/* ── SELECTED WORK ── */}
+      <section className="v2-section" id="work">
+        <div className="v2-section-head">
+          <span className="v2-eyebrow">§ 02 — Selected Work</span>
+          <h2>Products I've <em>built</em>,<br />physical and digital.</h2>
+          <span className="v2-count">06 selected · 2013–present</span>
+        </div>
+
+        <div className="v2-work-list">
+          {WORK_ITEMS.map(item => (
+            <Link
+              key={item.num}
+              to={item.href}
+              className="v2-work-row"
+              onMouseEnter={e => handleWorkEnter(e, item)}
+              onMouseMove={handleWorkMove}
+              onMouseLeave={handleWorkLeave}
+            >
+              <span className="v2-work-num">{item.num}</span>
+              <h3 className="v2-work-title">
+                <span>{item.plain}</span><em>{item.serif}</em>
+              </h3>
+              <span className="v2-work-meta">
+                {item.meta.map((m, i) => <span key={i}>{m}</span>)}
+              </span>
+              <span className="v2-work-arrow">→</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Work hover preview */}
+      <div
+        className={`v2-work-preview${preview.show ? ' show' : ''}`}
+        style={{ left: preview.x, top: preview.y }}
+        aria-hidden="true"
+      >
+        {preview.img
+          ? <img src={preview.img} alt="" />
+          : <div className="v2-preview-ph" style={{ background: preview.color }}>{preview.label}</div>
+        }
+      </div>
+
+      {/* ── APPROACH ── */}
+      <section className="v2-strip" id="approach">
+        <div className="v2-strip-inner">
+          <h2>The <em>approach.</em></h2>
+          <p className="v2-strip-sub">
+            Design is now requirements fluency. The most valuable skill in an AI-first world isn't Figma speed — it's knowing how to define what needs to be built with enough precision that an agent can execute it, and enough judgment to recognize when it hasn't.
           </p>
-          <div className="hero-actions">
-            <Link to="/work" className="btn-primary">See My Work</Link>
-            <a href="#methodology" className="btn-secondary">My Approach</a>
-          </div>
-        </div>
-        <div className="hero-right">
-          <div className="hero-right-pattern" />
-          <div className="hero-stats">
-            <div className="stat-card">
-              <div className="stat-number">40%</div>
-              <div className="stat-label">Reduction in design-to-production time using AI prototyping</div>
-            </div>
-            <div className="stat-card">
-              <div className="stat-number">2+</div>
-              <div className="stat-label">Years leading AI-assisted product development from scratch</div>
-            </div>
-            <div className="stat-card">
-              <div className="stat-number">B2B<br />&amp; B2C</div>
-              <div className="stat-label">SaaS platforms launched for municipalities, ISPs &amp; subscribers</div>
-            </div>
-            <div className="stat-card">
-              <div className="stat-number">10+</div>
-              <div className="stat-label">Years designing products for scale — physical and digital</div>
-            </div>
+          <div className="v2-thought-list">
+            {APPROACH.map(a => (
+              <div key={a.num} className="v2-thought">
+                <span className="v2-thought-y">{a.num}</span>
+                <span className="v2-thought-t">{a.title}</span>
+                <span className="v2-thought-src">{a.src}</span>
+                <span className="v2-thought-go">→</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* STORY */}
-      <section id="story" className="section-dark">
-        <div className="container">
-          <div className="story-grid">
-            <div className="story-left">
-              <p className="section-eyebrow" style={{ color: 'var(--accent-lt)' }}>The Background</p>
-              <h2 className="section-title" style={{ color: 'var(--bg)' }}>
-                From runway<br />to runway&nbsp;<em style={{ color: 'var(--accent-lt)' }}>code.</em>
-              </h2>
-              <div className="timeline">
-                <div className="timeline-item">
-                  <div className="timeline-year">2013 – 2023</div>
-                  <div className="timeline-content">
-                    <h4>Fashion Designer → Senior Manager of Design</h4>
-                    <p>Kohl's &amp; Macy's — Celebrity collaborations (Jennifer Lopez), 40+ styles monthly, global vendor management. Rose to Sr. Manager overseeing one of Macy's largest private brands.</p>
-                  </div>
-                </div>
-                <div className="timeline-item">
-                  <div className="timeline-year">2018</div>
-                  <div className="timeline-content">
-                    <h4>UX/UI Certification — PRATT Institute</h4>
-                    <p>Bridging physical design instincts to digital systems and human behavior.</p>
-                  </div>
-                </div>
-                <div className="timeline-item">
-                  <div className="timeline-year">2022</div>
-                  <div className="timeline-content">
-                    <h4>Digital Product Work</h4>
-                    <p>UI design for financial monitoring systems. Building the digital vocabulary.</p>
-                  </div>
-                </div>
-                <div className="timeline-item">
-                  <div className="timeline-year">2023 – Now</div>
-                  <div className="timeline-content">
-                    <h4>AI Product Lead — EntryPoint Networks</h4>
-                    <p>Designing and shipping complex SaaS platforms for municipalities and ISPs using a prototyping-first, AI-governed methodology.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+      {/* ── ABOUT COLLAGE ── */}
+      <section className="v2-about" id="about">
+        <div className="v2-about-grid">
 
-            <div className="story-right">
-              <div className="story-card">
-                <h3>Fashion is product management — I just didn't have the vocabulary for it yet.</h3>
-                <p>Trend forecasting is market research. Collections are sprints. Managing 40 styles a month to hit a sales target is a roadmap. The skills transferred completely.</p>
-              </div>
-              <div className="story-card">
-                <h3>AI removes the bottleneck between thinking and making.</h3>
-                <p>I've never been a developer, but I've always been a builder. My job is to know what good looks like — write the rules, set the constraints, and make sure the AI gets there consistently.</p>
-              </div>
-              <div className="story-card">
-                <h3>Physical-to-digital is a superpower, not a liability.</h3>
-                <p>Physical products taught me that design decisions have real consequences. That stakes-driven thinking makes my software better: grounded in actual use, not just aesthetics.</p>
-              </div>
+          <div className="v2-scrap v2-sc-note" ref={el => scrapsRef.current[0] = el}>
+            <span className="v2-note-label">NOTE TO SELF —</span>
+            fashion taught me design isn't about what looks good on a hanger — it's about what works for the person wearing it.
+          </div>
+
+          <div className="v2-scrap v2-sc-polaroid" ref={el => scrapsRef.current[1] = el}>
+            <div className="v2-polaroid-img">
+              <img src="/juliana_image2.jpg" alt="Juliana Rosario" />
+            </div>
+            <div className="v2-polaroid-cap">Juliana — NY/NJ</div>
+          </div>
+
+          <div className="v2-scrap v2-sc-ticket" ref={el => scrapsRef.current[2] = el}>
+            <div className="v2-ticket-head"><span>BOARDING</span><span>JR ✈ 2023</span></div>
+            <div className="v2-ticket-row"><span>From</span><span>FASHION</span></div>
+            <div className="v2-ticket-row"><span>To</span><span>AI PRODUCT</span></div>
+            <div className="v2-ticket-row"><span>Cert.</span><span>PRATT · UX/UI</span></div>
+            <div className="v2-ticket-row"><span>Now</span><span>ENTRYPOINT</span></div>
+          </div>
+
+          <div className="v2-scrap v2-sc-chip" ref={el => scrapsRef.current[3] = el}>
+            <div className="v2-chip-eyebrow">SELECTED NUMBERS</div>
+            <div className="v2-chip-big">40%</div>
+            <span>faster design-to-production with AI, </span>
+            <span className="v2-chip-hl">50%</span>
+            <span> yarn cost cut at Macy's, </span>
+            <span className="v2-chip-hl">20%</span>
+            <span> category sales lift at Kohl's.</span>
+            <div className="v2-chip-dots">
+              <i /><i /><i /><i /><i className="v2-chip-dot-fade" />
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* METHODOLOGY */}
-      <section id="methodology">
-        <div className="container">
-          <div className="method-header">
-            <div>
-              <p className="section-eyebrow">The Approach</p>
-              <h2 className="section-title">Prototyping-first.<br /><em>Human-always.</em></h2>
-            </div>
-            <p className="section-body">
-              Build working models first. Validate with real stakeholders. Ship software that scales. No wasted sprints, no static mockups, no interpretation required.
+          <div className="v2-scrap v2-sc-stamp" ref={el => scrapsRef.current[4] = el}>
+            Human-<br />Centered<br />· always ·
+          </div>
+
+          <div className="v2-about-center">
+            <div className="v2-about-role">Hello — I'm <em>Juliana</em></div>
+            <h3 className="v2-signature">Juliana Rosario</h3>
+            <p className="v2-about-p1">
+              Product lead, former fashion designer, and a mom to a baby boy in the NY/NJ area. My background is unconventional — and it's become my biggest professional advantage.
+            </p>
+            <p className="v2-about-p2">
+              I spent a decade in physical product — fashion, retail, global manufacturing — before moving into digital product and AI-native development. That wasn't a pivot. It was ten years of learning how to build things people actually want, at scale, under pressure, to a hard deadline. Fashion just happened to be the classroom.
             </p>
           </div>
-
-          <div className="method-steps">
-            <div className="method-step">
-              <div className="step-number">01</div>
-              <div className="step-title">Understand</div>
-              <p className="step-desc">Translate stakeholder goals and constraints into clear product requirements before a single pixel moves.</p>
-            </div>
-            <div className="method-step">
-              <div className="step-number">02</div>
-              <div className="step-title">Prototype</div>
-              <p className="step-desc">Build working, interactive models — real flows, real data — using AI tools. Validate before committing to dev.</p>
-            </div>
-            <div className="method-step">
-              <div className="step-number">03</div>
-              <div className="step-title">Document &amp; Govern</div>
-              <p className="step-desc">Write detailed PRDs and AI governance rules that keep output consistent across multiple concurrent platforms.</p>
-            </div>
-            <div className="method-step">
-              <div className="step-number">04</div>
-              <div className="step-title">Ship</div>
-              <p className="step-desc">Hand off dev-ready designs with full documentation and edge cases accounted for. Less back-and-forth. Faster launch.</p>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* WORK */}
-      <section id="work" className="section-alt">
-        <div className="container">
-          <p className="section-eyebrow">Selected Work</p>
-          <h2 className="section-title">Products I've built<br />and the <em>thinking behind them.</em></h2>
-
-          <div className="work-grid">
-            <div className="work-card">
-              <span className="work-card-tag">B2B SaaS · Network Infrastructure</span>
-              <h3>Multi-Portal Open-Access Fiber Platform</h3>
-              <p className="work-card-sub">EntryPoint Networks · 2023–Present</p>
-              <p>An interconnected suite of platforms for open-access city fiber networks — each with distinct user roles, data flows, and compliance requirements, unified by an AI-governed design system.</p>
-              <div className="work-outcomes">
-                <div className="outcome"><strong>Operator Portal</strong> — Network management for ISPs</div>
-                <div className="outcome"><strong>Provider Portal</strong> — Onboarding, provisioning, and billing</div>
-                <div className="outcome"><strong>Network Management Portal</strong> — City operations and oversight</div>
-              </div>
-            </div>
-
-            <div className="work-card">
-              <span className="work-card-tag">B2C · Subscriber Experience</span>
-              <h3>Subscriber Portals &amp; City Network Websites</h3>
-              <p className="work-card-sub">EntryPoint Networks · 2023–Present</p>
-              <p>Consumer-facing portals and branded city websites that let residents sign up and self-manage fiber service — without a support call.</p>
-              <div className="work-outcomes">
-                <div className="outcome">Self-provisioning flows with Stripe, Clerk, and Supabase</div>
-                <div className="outcome">City-branded sites for subscriber acquisition</div>
-                <div className="outcome">Scalable system enabling rapid multi-city deployment</div>
-              </div>
-            </div>
-
-            <div className="work-card work-card-wide">
-              <span className="work-card-tag">Fashion Design · Leadership · Scale</span>
-              <h3>Senior Manager of Design — Kohl's &amp; Macy's</h3>
-              <p className="work-card-sub">2013 – 2023 · 10 Years</p>
-              <div className="work-card-wide-inner">
-                <div>
-                  <p>Every product was a systems problem — build at scale, on time, within margin, for a real human. That's the question I've been answering for 12 years. First in fabric, now in software.</p>
-                </div>
-                <div>
-                  <div className="work-outcomes">
-                    <div className="outcome">20% category sales increase at Kohl's</div>
-                    <div className="outcome">50% yarn cost reduction at Macy's</div>
-                    <div className="outcome">Global vendor management across Asia and domestic markets</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+      {/* ── CONTACT ── */}
+      <section className="v2-contact" id="contact">
+        <div className="v2-contact-wash" />
+        <div className="v2-contact-inner">
+          <p className="v2-contact-eyebrow">§ 05 — Let's work together</p>
+          <h2>Build something<br /><em>worth using.</em></h2>
+          <p className="v2-contact-sub">
+            Open to full-time roles, fractional engagements, and conversations with teams who care about getting it right.
+          </p>
+          <div className="v2-contact-links">
+            <a className="v2-contact-primary" href="mailto:julianamrosario@gmail.com">julianamrosario@gmail.com →</a>
+            <a href="https://www.linkedin.com/in/julianamannionrosario" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+            <a href="https://www.instagram.com/byjuliemango" target="_blank" rel="noreferrer">Instagram ↗</a>
+            <a href="/JulianaRosario_Resume.pdf" download>Resume ↓</a>
           </div>
+        </div>
+        <div className="v2-footer">
+          <div>© 2026 Juliana Rosario</div>
+          <div>Built with care in the NY/NJ area</div>
+          <div className="v2-footer-r">v4.0 · Updated Apr 2026</div>
         </div>
       </section>
 
-      {/* TOOLS & SKILLS */}
-      <section id="tools">
-        <div className="container">
-          <p className="section-eyebrow">Skills &amp; Tools</p>
-          <h2 className="section-title">What I bring<br />to the <em>table.</em></h2>
-
-          <div className="tools-layout">
-            <div>
-              <div className="tools-group">
-                <div className="tools-group-label">AI Development &amp; Orchestration</div>
-                <div className="tool-tags">
-                  {['OpenAI / ChatGPT','Claude','Grok','FigmaMake','Lovable','Tempo Labs','Copilot'].map(t => (
-                    <span key={t} className="tool-tag">{t}</span>
-                  ))}
-                </div>
-              </div>
-              <div className="tools-group">
-                <div className="tools-group-label">Design &amp; UX</div>
-                <div className="tool-tags">
-                  {['Figma','Adobe Creative Suite','Wix Studio','WordPress'].map(t => (
-                    <span key={t} className="tool-tag">{t}</span>
-                  ))}
-                </div>
-              </div>
-              <div className="tools-group">
-                <div className="tools-group-label">Product &amp; Backend</div>
-                <div className="tool-tags">
-                  {['Supabase','Stripe','Clerk','Zapier','HubSpot'].map(t => (
-                    <span key={t} className="tool-tag">{t}</span>
-                  ))}
-                </div>
-              </div>
-              <div className="tools-group">
-                <div className="tools-group-label">Process &amp; Collaboration</div>
-                <div className="tool-tags">
-                  {['Jira','Confluence','Office 365'].map(t => (
-                    <span key={t} className="tool-tag">{t}</span>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="competencies-grid">
-              {[
-                { title: 'AI Product Development', desc: 'Directing AI to prototype, validate, and ship — without writing code.' },
-                { title: 'Human-Centered Design', desc: 'Translating complex requirements into products real people can use without a manual.' },
-                { title: 'B2B & B2C SaaS', desc: 'Enterprise platforms for municipalities and ISPs, and consumer portals for subscribers.' },
-                { title: 'Cross-Functional Leadership', desc: 'Aligning executives, city officials, developers, and marketers to ship.' },
-                { title: 'Process & Documentation', desc: 'PRDs, governance rules, and flow maps that let teams execute without hand-holding.' },
-                { title: 'Fashion Design Leadership', desc: 'A decade at scale — celebrity collaborations, global vendors, team leadership.' },
-              ].map(c => (
-                <div key={c.title} className="comp-card">
-                  <h4>{c.title}</h4>
-                  <p>{c.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ABOUT */}
-      <section id="about" className="section-about">
-        <div className="container">
-          <div className="about-inner">
-            <img
-              src="/juliana_image2.jpg"
-              alt="Juliana Rosario"
-              style={{ width: '100%', aspectRatio: '3/4', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
-            />
-            <div className="about-text">
-              <p className="section-eyebrow">About</p>
-              <h2>I make products that work<br />for <em>actual humans.</em></h2>
-              <p>I'm Juliana. Product lead, former fashion designer, and a mom to a baby boy in the NY/NJ area. My background is unconventional — and it's become my biggest professional advantage.</p>
-              <p>I spent a decade in physical product design — fashion, retail, global manufacturing — before moving into digital product and AI-native development. That wasn't a pivot. It was ten years of learning how to build things people actually want, at scale, under pressure, to a hard deadline. Fashion just happened to be the classroom.</p>
-              <p>Today I lead product at EntryPoint Networks, designing and shipping interconnected portals for open-access city fiber networks. We move from idea to production at a pace that makes traditional dev timelines look slow.</p>
-              <p>I have zero patience for products that don't respect people's time. Every flow I design is for someone who is distracted, tired, and doing three other things. That constraint keeps the work honest.</p>
-              <p>Open to full-time and fractional opportunities in AI product leadership.</p>
-              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                <a href="mailto:julianamrosario@gmail.com" className="btn-primary">Get in Touch</a>
-                <a href="/JulianaRosario_Resume.pdf" download className="btn-secondary">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ verticalAlign: 'middle', marginRight: '0.4rem' }}><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                  Download Resume
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CONTACT */}
-      <section id="contact" className="section-contact">
-        <div className="container">
-          <p className="section-eyebrow" style={{ color: 'var(--accent-lt)' }}>Let's Work Together</p>
-          <h2 className="section-title" style={{ color: 'var(--bg)', maxWidth: '520px', margin: '0 auto 1.25rem' }}>
-            Ready to build something <em style={{ color: 'var(--accent-lt)' }}>worth using?</em>
-          </h2>
-          <p className="contact-sub">I'm open to full-time roles, fractional engagements, and conversations with teams who care about getting it right.</p>
-          <div className="contact-links">
-            <a href="mailto:julianamrosario@gmail.com" className="contact-link">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-              Email Me
-            </a>
-            <a href="https://www.linkedin.com/in/julianamannionrosario" target="_blank" rel="noopener noreferrer" className="contact-link">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-              LinkedIn
-            </a>
-            <a href="tel:7179912937" className="contact-link">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.69h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.09a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17.5z"/></svg>
-              717-991-2937
-            </a>
-          </div>
-        </div>
-      </section>
-    </>
+    </main>
   )
 }
