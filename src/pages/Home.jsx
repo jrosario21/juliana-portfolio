@@ -267,8 +267,8 @@ export default function Home() {
         }
       </div>
 
-      {/* ── APPROACH ── */}
-      <section className="v2-strip" id="approach">
+      {/* ── APPROACH / WRITING ── */}
+      <section className="v2-strip" id="writing">
         <div className="v2-strip-inner">
           <h2>The <em>approach.</em></h2>
           <p className="v2-strip-sub">
@@ -280,7 +280,6 @@ export default function Home() {
                 <span className="v2-thought-y">{a.num}</span>
                 <span className="v2-thought-t">{a.title}</span>
                 <span className="v2-thought-src">{a.src}</span>
-                <span className="v2-thought-go">→</span>
               </div>
             ))}
           </div>

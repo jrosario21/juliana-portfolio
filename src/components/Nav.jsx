@@ -17,8 +17,8 @@ export default function Nav() {
         </div>
 
         <div className="v2-nav-mid">
-          <NavLink to="/work" className={({ isActive }) => isActive ? 'active' : ''}>Work</NavLink>
-          <NavLink to="/fashion" className={({ isActive }) => isActive ? 'active' : ''}>Fashion</NavLink>
+          <Link to="/#work" className={location.hash === '#work' ? 'active' : ''}>Work</Link>
+          <Link to="/#writing" className={location.hash === '#writing' ? 'active' : ''}>Writing</Link>
           <Link to="/#about" className={location.hash === '#about' ? 'active' : ''}>About</Link>
           <Link to="/#contact" className={location.hash === '#contact' ? 'active' : ''}>Contact</Link>
         </div>
@@ -39,8 +39,8 @@ export default function Nav() {
       {menuOpen && (
         <div className="v2-nav-overlay" onClick={close}>
           <div className="v2-nav-mobile" onClick={e => e.stopPropagation()}>
-            <NavLink to="/work" onClick={close}>Work</NavLink>
-            <NavLink to="/fashion" onClick={close}>Fashion</NavLink>
+            <Link to="/#work" onClick={close}>Work</Link>
+            <Link to="/#writing" onClick={close}>Writing</Link>
             <Link to="/#about" onClick={close}>About</Link>
             <Link to="/#contact" onClick={close}>Contact</Link>
             <div className="v2-nav-mobile-actions">
