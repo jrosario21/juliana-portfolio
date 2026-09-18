@@ -267,8 +267,8 @@ export default function Home() {
         }
       </div>
 
-      {/* ── APPROACH / WRITING ── */}
-      <section className="v2-strip" id="writing">
+      {/* ── APPROACH ── */}
+      <section className="v2-strip" id="approach">
         <div className="v2-strip-inner">
           <h2>The <em>approach.</em></h2>
           <p className="v2-strip-sub">
@@ -290,112 +290,64 @@ export default function Home() {
       <section className="v2-about" id="about">
         <div className="v2-about-grid">
 
-          <div className="v2-scrap v2-sc-note" ref={el => scrapsRef.current[0] = el}>
-            <span className="v2-note-label">NOTE TO SELF —</span>
-            fashion taught me design isn't about what looks good on a hanger — it's about what works for the person wearing it.
-          </div>
-
-          <div className="v2-scrap v2-sc-polaroid" ref={el => scrapsRef.current[1] = el}>
-            <div className="v2-polaroid-img">
-              <img src="/juliana_image2.jpg" alt="Juliana Rosario" />
-            </div>
-            <div className="v2-polaroid-cap">Juliana — NY/NJ</div>
-          </div>
-
-          <div className="v2-scrap v2-sc-ticket" ref={el => scrapsRef.current[2] = el}>
-            <div className="v2-ticket-head"><span>BOARDING</span><span>JR ✈ 2023</span></div>
-            <div className="v2-ticket-row"><span>From</span><span>FASHION</span></div>
-            <div className="v2-ticket-row"><span>To</span><span>AI PRODUCT</span></div>
-            <div className="v2-ticket-row"><span>Cert.</span><span>PRATT · UX/UI</span></div>
-            <div className="v2-ticket-row"><span>Now</span><span>ENTRYPOINT</span></div>
-          </div>
-
-          <div className="v2-scrap v2-sc-chip" ref={el => scrapsRef.current[3] = el}>
-            <div className="v2-chip-eyebrow">SELECTED NUMBERS</div>
-            <div className="v2-chip-big">40%</div>
-            <span>faster design-to-production with AI, </span>
-            <span className="v2-chip-hl">50%</span>
-            <span> yarn cost cut at Macy's, </span>
-            <span className="v2-chip-hl">20%</span>
-            <span> category sales lift at Kohl's.</span>
-            <div className="v2-chip-dots">
-              <i /><i /><i /><i /><i className="v2-chip-dot-fade" />
-            </div>
-          </div>
-
-          <div className="v2-scrap v2-sc-stamp" ref={el => scrapsRef.current[4] = el}>
-            Human-<br />Centered<br />· always ·
-          </div>
-
-          {/* ── VINYL RECORD ── */}
-          <div className="v2-scrap v2-sc-vinyl" ref={el => scrapsRef.current[5] = el} aria-hidden="true">
-            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" className="v2-vinyl-svg">
-              <circle cx="60" cy="60" r="58" fill="#1a1a1c"/>
-              <circle cx="60" cy="60" r="54" fill="none" stroke="#2a2a2e" strokeWidth="0.5"/>
-              <circle cx="60" cy="60" r="50" fill="none" stroke="#222224" strokeWidth="0.4"/>
-              <circle cx="60" cy="60" r="46" fill="none" stroke="#2a2a2e" strokeWidth="0.4"/>
-              <circle cx="60" cy="60" r="42" fill="none" stroke="#222224" strokeWidth="0.5"/>
-              <circle cx="60" cy="60" r="38" fill="none" stroke="#2a2a2e" strokeWidth="0.4"/>
-              <circle cx="60" cy="60" r="34" fill="none" stroke="#222224" strokeWidth="0.4"/>
-              <circle cx="60" cy="60" r="30" fill="none" stroke="#2a2a2e" strokeWidth="0.5"/>
-              <circle cx="60" cy="60" r="26" fill="none" stroke="#222224" strokeWidth="0.4"/>
-              <circle cx="60" cy="60" r="16" fill="#E63946"/>
-              <circle cx="60" cy="60" r="13" fill="#c8102e"/>
-              <text x="60" y="57" textAnchor="middle" fill="rgba(255,255,255,0.7)" fontSize="5" fontFamily="var(--mono)" letterSpacing="0.3">JULIANA</text>
-              <text x="60" y="64" textAnchor="middle" fill="rgba(255,255,255,0.5)" fontSize="3.5" fontFamily="var(--mono)" letterSpacing="0.2">ROSARIO</text>
-              <circle cx="60" cy="60" r="3" fill="#1a1a1c"/>
-              <ellipse cx="44" cy="36" rx="3" ry="1.5" fill="rgba(255,255,255,0.08)" transform="rotate(-40 44 36)"/>
-            </svg>
-          </div>
-
-          {/* ── TIMELINE CARD ── */}
-          <div className="v2-scrap v2-sc-timeline" ref={el => scrapsRef.current[6] = el}>
-            <div className="v2-timeline-title">One thread runs through it.</div>
-            <div className="v2-timeline-list">
-              <div className="v2-tl-row">
-                <span className="v2-tl-dot" />
-                <div>
-                  <span className="v2-tl-year">2013–2023</span>
-                  <span className="v2-tl-label">Fashion Designer → Sr. Manager of Design · Kohl's &amp; Macy's</span>
-                </div>
-              </div>
-              <div className="v2-tl-row">
-                <span className="v2-tl-dot" />
-                <div>
-                  <span className="v2-tl-year">2018</span>
-                  <span className="v2-tl-label">UX/UI Certification · Pratt Institute</span>
-                </div>
-              </div>
-              <div className="v2-tl-row">
-                <span className="v2-tl-dot" />
-                <div>
-                  <span className="v2-tl-year">2022</span>
-                  <span className="v2-tl-label">Digital Product Work · Financial systems UI</span>
-                </div>
-              </div>
-              <div className="v2-tl-row">
-                <span className="v2-tl-dot v2-tl-dot-accent" />
-                <div>
-                  <span className="v2-tl-year">2023–Now</span>
-                  <span className="v2-tl-label">AI Product Lead · EntryPoint Networks</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
           <div className="v2-about-center">
             <div className="v2-about-role">Hello — I'm <em>Juliana</em></div>
             <h3 className="v2-signature">Juliana Rosario</h3>
             <p className="v2-about-p1">
-              Product lead, former fashion designer, and a mom — based in NY/NJ with an unconventional path that turned out to be exactly the right one.
+              Product lead, former fashion designer, and a mom of two — based in NY/NJ, on a path that never really changed direction, just medium.
             </p>
             <p className="v2-about-p2">
-              A decade in physical product: fashion, retail, global manufacturing. Then digital. Then AI. It was never a pivot so much as a natural progression — building things people actually want, under pressure, at scale. The industry changed. The instincts didn't.
+              A decade in physical product — fashion, retail, global manufacturing. Then digital. Then AI. Never a pivot, just a natural progression: building things people actually want, under pressure, at scale. The industry changed. The instincts didn't.
             </p>
             <p className="v2-about-p3">
-              I love music, deeply. I dance for fun. I travel. I share my home with a very opinionated mini poodle named Domino. I'm fascinated by psychology — why people make the choices they make, what drives them, what they're really asking for. I organize obsessively and find genuine joy in efficiency. And I believe in personal style not as aesthetics, but as authorship. What you put into the world says something. I like mine to mean something.
+              Off the clock, life is loud in the best way: two kids, an opinionated mini poodle named Domino, and music playing most of the time. I dance because it's fun, not because anyone's watching, and I travel whenever I can. I'm endlessly curious about why people make the choices they make — the same question that drives my design work, just without a deadline attached. I organize obsessively, mostly because it clears space to think. And I believe personal style, in a closet or in a product, is authorship, not aesthetics: what you put into the world says something. I like mine to mean something.
             </p>
           </div>
+
+          <div className="v2-about-side">
+            {/* ── TIMELINE CARD ── */}
+            <div className="v2-scrap v2-sc-timeline" ref={el => scrapsRef.current[1] = el}>
+              <div className="v2-timeline-title">One thread runs through it.</div>
+              <div className="v2-timeline-list">
+                <div className="v2-tl-row">
+                  <span className="v2-tl-dot" />
+                  <div>
+                    <span className="v2-tl-year">2013–2023</span>
+                    <span className="v2-tl-label">Fashion Designer → Sr. Manager of Design · Kohl's &amp; Macy's</span>
+                  </div>
+                </div>
+                <div className="v2-tl-row">
+                  <span className="v2-tl-dot" />
+                  <div>
+                    <span className="v2-tl-year">2018</span>
+                    <span className="v2-tl-label">UX/UI Certification · Pratt Institute</span>
+                  </div>
+                </div>
+                <div className="v2-tl-row">
+                  <span className="v2-tl-dot" />
+                  <div>
+                    <span className="v2-tl-year">2022</span>
+                    <span className="v2-tl-label">Digital Product Work · Financial systems UI</span>
+                  </div>
+                </div>
+                <div className="v2-tl-row">
+                  <span className="v2-tl-dot v2-tl-dot-accent" />
+                  <div>
+                    <span className="v2-tl-year">2023–Now</span>
+                    <span className="v2-tl-label">AI Product Lead · EntryPoint Networks</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="v2-scrap v2-sc-polaroid" ref={el => scrapsRef.current[0] = el}>
+              <div className="v2-polaroid-img">
+                <img src="/juliana_image2.jpg" alt="Juliana Rosario" />
+              </div>
+              <div className="v2-polaroid-cap">Juliana — NY/NJ</div>
+            </div>
+          </div>
+
         </div>
       </section>
 

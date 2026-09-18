@@ -41,25 +41,25 @@ export default function JLo() {
         <img className="proj-full-img" src="/jlo_spring16_board.png" alt="JLo Spring 16 concept board" />
         <div className="proj-grid-3">
           <div>
-            <img src="/jlo_spring16_mood.jpg" alt="" />
+            <img src="/jlo_spring16_mood.jpg" alt="JLo Spring '16 mood board" />
             <div className="proj-caption"><span>Mood</span><span>Spring '16</span></div>
           </div>
           <div>
-            <img src="/jlo_spring16_1.jpg" alt="" />
+            <img src="/jlo_spring16_1.jpg" alt="JLo Spring '16 development sketches" />
             <div className="proj-caption"><span>Development</span><span>Spring '16</span></div>
           </div>
           <div>
-            <img src="/jlo_spring16_2.jpg" alt="" />
+            <img src="/jlo_spring16_2.jpg" alt="JLo Spring '16 development sketches, continued" />
             <div className="proj-caption"><span>Development</span><span>Spring '16</span></div>
           </div>
         </div>
         <div className="proj-grid-2">
           <div>
-            <img src="/jlo_spring16_flats.jpg" alt="" />
+            <img src="/jlo_spring16_flats.jpg" alt="JLo Spring '16 technical flats" />
             <div className="proj-caption"><span>Technical flats</span><span>Spring '16</span></div>
           </div>
           <div>
-            <img src="/jlo_spring16_marketing1.jpg" alt="" />
+            <img src="/jlo_spring16_marketing1.jpg" alt="JLo Spring '16 marketing photography" />
             <div className="proj-caption"><span>Marketing</span><span>Spring '16</span></div>
           </div>
         </div>
@@ -71,21 +71,21 @@ export default function JLo() {
         </section>
         <div className="proj-grid-2">
           <div>
-            <img src="/jlo_wovensweater_board.png" alt="" />
+            <img src="/jlo_wovensweater_board.png" alt="JLo sweater program concept board" />
             <div className="proj-caption"><span>Concept board</span><span>Sweaters</span></div>
           </div>
           <div>
-            <img src="/jlo_sweater_intro.jpg" alt="" />
+            <img src="/jlo_sweater_intro.jpg" alt="JLo sweater program campaign photography" />
             <div className="proj-caption"><span>Campaign</span><span>Sweaters</span></div>
           </div>
         </div>
         <div className="proj-grid-2">
           <div>
-            <img src="/jlo_sweater_flats.jpg" alt="" />
+            <img src="/jlo_sweater_flats.jpg" alt="JLo sweater program technical flats and knit specs" />
             <div className="proj-caption"><span>Flats</span><span>Knit specs</span></div>
           </div>
           <div>
-            <img src="/jlo_sweaters_marketing1.jpg" alt="" />
+            <img src="/jlo_sweaters_marketing1.jpg" alt="JLo sweater program in-store marketing" />
             <div className="proj-caption"><span>In-store</span><span>Marketing</span></div>
           </div>
         </div>
@@ -98,15 +98,15 @@ export default function JLo() {
         <img className="proj-full-img" src="/vera_fall19_board.png" alt="Vera Fall 19 board" />
         <div className="proj-grid-3">
           <div>
-            <img src="/vera_fall19_mood1.jpg" alt="" />
+            <img src="/vera_fall19_mood1.jpg" alt="Simply Vera Vera Wang Fall '19 mood board" />
             <div className="proj-caption"><span>Mood</span><span>Vera F'19</span></div>
           </div>
           <div>
-            <img src="/vera_fall19_flats1.jpg" alt="" />
+            <img src="/vera_fall19_flats1.jpg" alt="Simply Vera Vera Wang Fall '19 technical flats" />
             <div className="proj-caption"><span>Flats</span><span>Vera F'19</span></div>
           </div>
           <div>
-            <img src="/vera_fall19_marketing.jpg" alt="" />
+            <img src="/vera_fall19_marketing.jpg" alt="Simply Vera Vera Wang Fall '19 marketing photography" />
             <div className="proj-caption"><span>Marketing</span><span>Vera F'19</span></div>
           </div>
         </div>
@@ -119,15 +119,15 @@ export default function JLo() {
         <img className="proj-full-img" src="/danabuchman_fall18_board.png" alt="Dana Buchman Fall 18 board" />
         <div className="proj-grid-3">
           <div>
-            <img src="/danabuchman_fall18_mood.jpg" alt="" />
+            <img src="/danabuchman_fall18_mood.jpg" alt="Dana Buchman Fall '18 mood board" />
             <div className="proj-caption"><span>Mood</span><span>DB F'18</span></div>
           </div>
           <div>
-            <img src="/danabuchman_fall18_flats1.jpg" alt="" />
+            <img src="/danabuchman_fall18_flats1.jpg" alt="Dana Buchman Fall '18 technical flats" />
             <div className="proj-caption"><span>Flats</span><span>DB F'18</span></div>
           </div>
           <div>
-            <img src="/danabuchman_fall18_marketing.jpg" alt="" />
+            <img src="/danabuchman_fall18_marketing.jpg" alt="Dana Buchman Fall '18 marketing photography" />
             <div className="proj-caption"><span>Marketing</span><span>DB F'18</span></div>
           </div>
         </div>
