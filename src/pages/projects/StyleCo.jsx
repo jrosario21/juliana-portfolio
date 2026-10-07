@@ -4,17 +4,17 @@ import './Project.css'
 export default function StyleCo() {
   return (
     <>
-      <nav className="proj-nav">
+      <nav className="proj-nav" aria-label="Project">
         <Link to="/" className="proj-back-link">← All work</Link>
-        <Link to="/">
-          <img src="/logo-monogram.png" alt="JR" className="proj-nav-logo" onError={e => e.target.style.display='none'} />
+        <Link to="/" aria-label="Juliana Rosario — home">
+          <img src="/logo-monogram.png" alt="" className="proj-nav-logo" onError={e => e.target.style.display='none'} />
         </Link>
         <div className="proj-nav-right">
           <a href="mailto:julianamrosario@gmail.com">julianamrosario@gmail.com</a>
         </div>
       </nav>
 
-      <header className="proj-ph">
+      <header className="proj-ph" id="main" tabIndex={-1}>
         <div className="proj-ph-eyebrow">05 · Fashion · Macy's Private Brand</div>
         <h1 className="proj-ph-title">Style <em>&amp; Co.</em></h1>
         <p className="proj-ph-intro">Senior Manager of Design at Macy's Inc. — leading the Style &amp; Co. women's sweater and wovens category across multiple seasons. A $100M+ business built on knowing a customer the industry tends to overlook.</p>
@@ -83,10 +83,10 @@ export default function StyleCo() {
         </div>
       </main>
 
-      <footer className="proj-footer">
-        <div>© 2025 Juliana Rosario</div>
+      <aside className="proj-footer" aria-label="Page sign-off">
+        <div>© 2026 Juliana Rosario</div>
         <div className="proj-footer-r">Made in NY/NJ · Fashion → AI</div>
-      </footer>
+      </aside>
     </>
   )
 }

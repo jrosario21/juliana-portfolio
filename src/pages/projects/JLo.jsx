@@ -4,17 +4,17 @@ import './Project.css'
 export default function JLo() {
   return (
     <>
-      <nav className="proj-nav">
+      <nav className="proj-nav" aria-label="Project">
         <Link to="/" className="proj-back-link">← All work</Link>
-        <Link to="/">
-          <img src="/logo-monogram.png" alt="JR" className="proj-nav-logo" onError={e => e.target.style.display='none'} />
+        <Link to="/" aria-label="Juliana Rosario — home">
+          <img src="/logo-monogram.png" alt="" className="proj-nav-logo" onError={e => e.target.style.display='none'} />
         </Link>
         <div className="proj-nav-right">
           <a href="mailto:julianamrosario@gmail.com">julianamrosario@gmail.com</a>
         </div>
       </nav>
 
-      <header className="proj-ph">
+      <header className="proj-ph" id="main" tabIndex={-1}>
         <div className="proj-ph-eyebrow">06 · Fashion · Kohl's Private &amp; Exclusive Brands</div>
         <h1 className="proj-ph-title">Four years at <em>Kohl's</em></h1>
         <p className="proj-ph-intro">Designer across Kohl's private and exclusive brand portfolio — sweaters and wovens for multiple seasonal deliveries a year, moving between customer profiles and price tiers. The Jennifer Lopez Collection was a highlight, but the real story is the range.</p>
@@ -143,10 +143,10 @@ export default function JLo() {
         </div>
       </main>
 
-      <footer className="proj-footer">
-        <div>© 2025 Juliana Rosario</div>
+      <aside className="proj-footer" aria-label="Page sign-off">
+        <div>© 2026 Juliana Rosario</div>
         <div className="proj-footer-r">Made in NY/NJ · Fashion → AI</div>
-      </footer>
+      </aside>
     </>
   )
 }

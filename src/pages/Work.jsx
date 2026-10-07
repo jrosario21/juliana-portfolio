@@ -63,7 +63,7 @@ const methodSteps = [
 
 export default function Work() {
   return (
-    <>
+    <main id="main" tabIndex={-1}>
       {/* PAGE HEADER */}
       <div className="page-header">
         <div className="page-header-inner">
@@ -132,7 +132,7 @@ export default function Work() {
                 <span className="work-card-tag">Live · Orangeburg, SC</span>
                 <h3>Orangeburg Fiber</h3>
                 <p>The city of Orangeburg's open-access fiber network — serving residents with multi-ISP choice, self-provisioning, and a city-branded experience from sign-up through account management.</p>
-                <a href="https://www.orangeburgfiber.net" target="_blank" rel="noopener noreferrer" className="deployment-link">Visit orangeburgfiber.net →</a>
+                <a href="https://www.orangeburgfiber.net" target="_blank" rel="noopener noreferrer" className="deployment-link">Visit orangeburgfiber.net <span aria-hidden="true">→</span><span className="sr-only"> (opens in a new tab)</span></a>
               </div>
             </div>
 
@@ -144,7 +144,7 @@ export default function Work() {
                 <span className="work-card-tag">Live · Jamestown, NY</span>
                 <h3>Jamestown BPU Fiber</h3>
                 <p>Jamestown's municipally-owned fiber network, operated in partnership with the Board of Public Utilities — connecting residents to competitive ISPs on a city-owned open-access infrastructure.</p>
-                <a href="https://www.jamestownbpufiber.com" target="_blank" rel="noopener noreferrer" className="deployment-link">Visit jamestownbpufiber.com →</a>
+                <a href="https://www.jamestownbpufiber.com" target="_blank" rel="noopener noreferrer" className="deployment-link">Visit jamestownbpufiber.com <span aria-hidden="true">→</span><span className="sr-only"> (opens in a new tab)</span></a>
               </div>
             </div>
           </div>
@@ -227,6 +227,6 @@ export default function Work() {
           </div>
         </div>
       </section>
-    </>
+    </main>
   )
 }

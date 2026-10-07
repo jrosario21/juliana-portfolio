@@ -4,23 +4,23 @@ import './Project.css'
 export default function Jamestown() {
   return (
     <>
-      <nav className="proj-nav">
+      <nav className="proj-nav" aria-label="Project">
         <Link to="/" className="proj-back-link">← All work</Link>
-        <Link to="/">
-          <img src="/logo-monogram.png" alt="JR" className="proj-nav-logo" onError={e => e.target.style.display='none'} />
+        <Link to="/" aria-label="Juliana Rosario — home">
+          <img src="/logo-monogram.png" alt="" className="proj-nav-logo" onError={e => e.target.style.display='none'} />
         </Link>
         <div className="proj-nav-right">
           <a href="mailto:julianamrosario@gmail.com">julianamrosario@gmail.com</a>
         </div>
       </nav>
 
-      <header className="proj-ph">
+      <header className="proj-ph" id="main" tabIndex={-1}>
         <div className="proj-ph-eyebrow">02 · Live · B2C SaaS · Municipal Utility</div>
         <h1 className="proj-ph-title">Jamestown <em>BPU Fiber</em></h1>
         <p className="proj-ph-intro">The second launch on the open-access platform — same bones, different city, different voice. Built as a templated deployment so each municipality gets a product that feels local, not franchised.</p>
 
         <div className="proj-meta">
-          <div className="proj-meta-cell"><label>Role</label><strong>AI Product Lead · Design Director</strong></div>
+          <div className="proj-meta-cell"><label>Role</label><strong>Lead Product Designer</strong></div>
           <div className="proj-meta-cell"><label>Client</label><strong>Jamestown Board of Public Utilities, NY</strong></div>
           <div className="proj-meta-cell"><label>Year</label><strong>2024 — live</strong></div>
           <div className="proj-meta-cell"><label>Stack</label><strong>React · Stripe · shared CMS</strong></div>
@@ -29,7 +29,7 @@ export default function Jamestown() {
             <strong>
               <a href="https://www.jamestownbpufiber.com" target="_blank" rel="noopener noreferrer" style={{borderBottom:'1px solid var(--accent)',color:'var(--accent)'}}>
                 jamestownbpufiber.com ↗
-              </a>
+              <span className="sr-only"> (opens in a new tab)</span></a>
             </strong>
           </div>
         </div>
@@ -69,10 +69,10 @@ export default function Jamestown() {
         </div>
       </main>
 
-      <footer className="proj-footer">
-        <div>© 2025 Juliana Rosario</div>
+      <aside className="proj-footer" aria-label="Page sign-off">
+        <div>© 2026 Juliana Rosario</div>
         <div className="proj-footer-r">Made in NY/NJ · Fashion → AI</div>
-      </footer>
+      </aside>
     </>
   )
 }

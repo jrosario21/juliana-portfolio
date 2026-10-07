@@ -4,17 +4,17 @@ import './Project.css'
 export default function Elements() {
   return (
     <>
-      <nav className="proj-nav">
+      <nav className="proj-nav" aria-label="Project">
         <Link to="/" className="proj-back-link">← All work</Link>
-        <Link to="/">
-          <img src="/logo-monogram.png" alt="JR" className="proj-nav-logo" onError={e => e.target.style.display='none'} />
+        <Link to="/" aria-label="Juliana Rosario — home">
+          <img src="/logo-monogram.png" alt="" className="proj-nav-logo" onError={e => e.target.style.display='none'} />
         </Link>
         <div className="proj-nav-right">
           <a href="mailto:julianamrosario@gmail.com">julianamrosario@gmail.com</a>
         </div>
       </nav>
 
-      <header className="proj-ph">
+      <header className="proj-ph" id="main" tabIndex={-1}>
         <div className="proj-ph-eyebrow">04 · Contract · Design System · iOS + Android</div>
         <h1 className="proj-ph-title">Elements <em>Design Libraries</em></h1>
         <p className="proj-ph-intro">My first step into product. A contract role maintaining and extending the Elements design system across iOS and Android — pattern upkeep, component additions, and keeping the two platform libraries in lockstep.</p>
@@ -40,15 +40,15 @@ export default function Elements() {
 
         <div className="proj-grid-3">
           <div>
-            <img src="/elements_iOS.png" alt="iOS" />
+            <img src="/elements_iOS.png" alt="Elements iOS design library screens" />
             <div className="proj-caption"><span>iOS</span><span>Native patterns</span></div>
           </div>
           <div>
-            <img src="/elements_Android.png" alt="Android" />
+            <img src="/elements_Android.png" alt="Elements Android design library screens" />
             <div className="proj-caption"><span>Android</span><span>Material-adapted</span></div>
           </div>
           <div>
-            <img src="/elements_Marketing.png" alt="Marketing" />
+            <img src="/elements_Marketing.png" alt="Elements marketing component library" />
             <div className="proj-caption"><span>Marketing</span><span>Editorial voice</span></div>
           </div>
         </div>
@@ -75,10 +75,10 @@ export default function Elements() {
         </div>
       </main>
 
-      <footer className="proj-footer">
-        <div>© 2025 Juliana Rosario</div>
+      <aside className="proj-footer" aria-label="Page sign-off">
+        <div>© 2026 Juliana Rosario</div>
         <div className="proj-footer-r">Made in NY/NJ · Fashion → AI</div>
-      </footer>
+      </aside>
     </>
   )
 }

@@ -30,7 +30,7 @@ export default function Fashion() {
   const closeLightbox = () => setLightbox(null)
 
   return (
-    <>
+    <main id="main" tabIndex={-1}>
       {/* PAGE HEADER */}
       <div className="page-header">
         <div className="page-header-inner">
@@ -57,12 +57,18 @@ export default function Fashion() {
 
           {/* Spring 24 — full width */}
           <div className="img-block" style={{ marginBottom: '2rem' }}>
-            <img
-              src="/styleco_spring_24_1.jpg"
-              alt="Style &amp; Co. Spring 2024 Collection Board"
-              style={{ width: '100%', height: 'auto', display: 'block', cursor: 'zoom-in' }}
+            <button
+              type="button"
+              className="img-zoom"
+              aria-label="Enlarge image: Style & Co. Spring 2024 Collection Board"
               onClick={() => openLightbox('/styleco_spring_24_1.jpg', 'Style & Co. Spring 2024 Collection Board')}
-            />
+            >
+              <img
+                src="/styleco_spring_24_1.jpg"
+                alt="Style &amp; Co. Spring 2024 Collection Board"
+                style={{ width: '100%', height: 'auto', display: 'block', }}
+              />
+            </button>
             <div className="img-caption-row">
               <span className="img-label">Spring 2024 — Collection Board</span>
               <span className="img-meta">Style &amp; Co. · Macy's</span>
@@ -77,12 +83,18 @@ export default function Fashion() {
               { src: '/styleco_fall_21_1.jpg', alt: 'Style & Co. Fall Holiday 2021', label: 'Fall Holiday 2021' },
             ].map(img => (
               <div key={img.src}>
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  style={{ width: '100%', height: 'auto', display: 'block', cursor: 'zoom-in' }}
+                <button
+                  type="button"
+                  className="img-zoom"
+                  aria-label={`Enlarge image: ${img.alt}`}
                   onClick={() => openLightbox(img.src, img.alt)}
-                />
+                >
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    style={{ width: '100%', height: 'auto', display: 'block', }}
+                  />
+                </button>
                 <div className="img-caption-col">
                   <div className="img-label-sm">{img.label}</div>
                   <div className="img-meta-sm">Collection Board</div>
@@ -124,12 +136,18 @@ export default function Fashion() {
               className="img-block"
               style={{ marginBottom: i === kohlsBoards.length - 1 ? '4rem' : '2.5rem' }}
             >
-              <img
-                src={board.src}
-                alt={board.alt}
-                style={{ width: '100%', height: 'auto', display: 'block', cursor: 'zoom-in' }}
+              <button
+                type="button"
+                className="img-zoom"
+                aria-label={`Enlarge image: ${board.alt}`}
                 onClick={() => openLightbox(board.src, board.alt)}
-              />
+              >
+                <img
+                  src={board.src}
+                  alt={board.alt}
+                  style={{ width: '100%', height: 'auto', display: 'block', }}
+                />
+              </button>
               <div className="img-caption-row">
                 <span className="img-label">{board.label}</span>
                 <span className="img-meta">{board.meta}</span>
@@ -175,6 +193,6 @@ export default function Fashion() {
       </section>
 
       {lightbox && <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={closeLightbox} />}
-    </>
+    </main>
   )
 }

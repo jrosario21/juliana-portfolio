@@ -4,23 +4,23 @@ import './Project.css'
 export default function Orangeburg() {
   return (
     <>
-      <nav className="proj-nav">
+      <nav className="proj-nav" aria-label="Project">
         <Link to="/" className="proj-back-link">← All work</Link>
-        <Link to="/">
-          <img src="/logo-monogram.png" alt="JR" className="proj-nav-logo" onError={e => e.target.style.display='none'} />
+        <Link to="/" aria-label="Juliana Rosario — home">
+          <img src="/logo-monogram.png" alt="" className="proj-nav-logo" onError={e => e.target.style.display='none'} />
         </Link>
         <div className="proj-nav-right">
           <a href="mailto:julianamrosario@gmail.com">julianamrosario@gmail.com</a>
         </div>
       </nav>
 
-      <header className="proj-ph">
+      <header className="proj-ph" id="main" tabIndex={-1}>
         <div className="proj-ph-eyebrow">01 · Live · B2C SaaS · Fiber ISP</div>
         <h1 className="proj-ph-title">Orangeburg <em>Fiber</em></h1>
         <p className="proj-ph-intro">A municipal fiber network needed a customer-facing portal that could sign up residents, take payments, and explain a genuinely new category of utility — built end-to-end with an AI-governed workflow in weeks, not quarters.</p>
 
         <div className="proj-meta">
-          <div className="proj-meta-cell"><label>Role</label><strong>AI Product Lead · Design Director</strong></div>
+          <div className="proj-meta-cell"><label>Role</label><strong>Lead Product Designer</strong></div>
           <div className="proj-meta-cell"><label>Client</label><strong>EntryPoint Networks · City of Orangeburg, SC</strong></div>
           <div className="proj-meta-cell"><label>Year</label><strong>2024 — live</strong></div>
           <div className="proj-meta-cell"><label>Stack</label><strong>React · Stripe · custom CMS</strong></div>
@@ -29,7 +29,7 @@ export default function Orangeburg() {
             <strong>
               <a href="https://www.orangeburgfiber.net" target="_blank" rel="noopener noreferrer" style={{borderBottom:'1px solid var(--accent)',color:'var(--accent)'}}>
                 orangeburgfiber.net ↗
-              </a>
+              <span className="sr-only"> (opens in a new tab)</span></a>
             </strong>
           </div>
         </div>
@@ -63,7 +63,7 @@ export default function Orangeburg() {
         <div className="proj-stats">
           <div><div className="s-num"><em>6</em> wks</div><div className="s-lbl">From kickoff to first paying customer</div></div>
           <div><div className="s-num"><em>40%</em></div><div className="s-lbl">Engineering time saved vs. a traditional build</div></div>
-          <div><div className="s-num"><em>1</em></div><div className="s-lbl">Product lead + agent stack replaced a 4-person squad</div></div>
+          <div><div className="s-num"><em>1</em></div><div className="s-lbl">Lead designer + agent stack replaced a 4-person squad</div></div>
         </div>
 
         <section className="proj-section">
@@ -80,10 +80,10 @@ export default function Orangeburg() {
         </div>
       </main>
 
-      <footer className="proj-footer">
-        <div>© 2025 Juliana Rosario</div>
+      <aside className="proj-footer" aria-label="Page sign-off">
+        <div>© 2026 Juliana Rosario</div>
         <div className="proj-footer-r">Made in NY/NJ · Fashion → AI</div>
-      </footer>
+      </aside>
     </>
   )
 }

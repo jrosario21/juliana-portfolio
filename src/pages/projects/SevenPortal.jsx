@@ -4,23 +4,23 @@ import './Project.css'
 export default function SevenPortal() {
   return (
     <>
-      <nav className="proj-nav">
+      <nav className="proj-nav" aria-label="Project">
         <Link to="/" className="proj-back-link">← All work</Link>
-        <Link to="/">
-          <img src="/logo-monogram.png" alt="JR" className="proj-nav-logo" onError={e => e.target.style.display='none'} />
+        <Link to="/" aria-label="Juliana Rosario — home">
+          <img src="/logo-monogram.png" alt="" className="proj-nav-logo" onError={e => e.target.style.display='none'} />
         </Link>
         <div className="proj-nav-right">
           <a href="mailto:julianamrosario@gmail.com">julianamrosario@gmail.com</a>
         </div>
       </nav>
 
-      <header className="proj-ph">
+      <header className="proj-ph" id="main" tabIndex={-1}>
         <div className="proj-ph-eyebrow">03 · Under NDA · B2B Platform</div>
         <h1 className="proj-ph-title">Seven <em>Portals,</em> One Platform</h1>
         <p className="proj-ph-intro">Seven distinct user types, one shared infrastructure. A portal architecture for a national fiber operator — the admin brain behind the customer-facing sites.</p>
 
         <div className="proj-meta">
-          <div className="proj-meta-cell"><label>Role</label><strong>AI Product Lead · Platform Architect</strong></div>
+          <div className="proj-meta-cell"><label>Role</label><strong>Lead Product Designer · Platform Architect</strong></div>
           <div className="proj-meta-cell"><label>Client</label><strong>EntryPoint Networks</strong></div>
           <div className="proj-meta-cell"><label>Year</label><strong>2024 — 2025</strong></div>
           <div className="proj-meta-cell"><label>Surfaces</label><strong>Resident · ISP · City · Ops · Installer · Finance · Super-admin</strong></div>
@@ -69,10 +69,10 @@ export default function SevenPortal() {
         </div>
       </main>
 
-      <footer className="proj-footer">
-        <div>© 2025 Juliana Rosario</div>
+      <aside className="proj-footer" aria-label="Page sign-off">
+        <div>© 2026 Juliana Rosario</div>
         <div className="proj-footer-r">Made in NY/NJ · Fashion → AI</div>
-      </footer>
+      </aside>
     </>
   )
 }

@@ -4,7 +4,7 @@ export default function Footer() {
       <p>© 2026 Juliana Rosario. All rights reserved.</p>
       <img
         src="/logo-monogram.png"
-        alt="JR"
+        alt=""
         style={{ height: '28px', width: 'auto', opacity: 0.4 }}
         onError={e => e.target.style.display = 'none'}
       />

@@ -6,7 +6,7 @@ const TAGLINES = [
   `I used to design what people wore. Now I design what they use. Different medium, same question: <em>does this actually fit the person it's made for?</em>`,
   `Ten years of apparel at scale taught me one thing — design only matters if it works on a <em>real body, on a real day.</em> Now I bring that same discipline to AI-native product work.`,
   `I make products for the person who is tired, distracted, and already doing three other things. Fashion was the <em>classroom.</em> Software is the practice.`,
-  `Former fashion designer, current AI product lead. Same job description — <em>build things people actually want, at scale, under pressure, to a hard deadline.</em> Only the medium changed.`
+  `Former fashion designer, current lead product designer. Same job description — <em>build things people actually want, at scale, under pressure, to a hard deadline.</em> Only the medium changed.`
 ]
 
 const WORK_ITEMS = [
@@ -159,7 +159,7 @@ export default function Home() {
   }
 
   return (
-    <main className="v2-home">
+    <main className="v2-home" id="main" tabIndex={-1}>
 
       {/* ── HERO ── */}
       <header className="v2-hero" id="top" ref={heroRef}>
@@ -174,16 +174,18 @@ export default function Home() {
             <span>MMXXVI</span>
           </div>
           <p
+            aria-live="polite"
             className="v2-tagline"
             dangerouslySetInnerHTML={{ __html: TAGLINES[taglineIdx] }}
           />
           <div className="v2-badge-wrap">
-            <span className="v2-hero-badge">● Open to what's next</span>
+            <span className="v2-hero-badge"><span aria-hidden="true">●</span> Open to what's next</span>
             <button
               className="v2-cycle-btn"
               onClick={() => setTaglineIdx(i => (i + 1) % TAGLINES.length)}
               title="Try a different intro"
-            >↻ cycle intro</button>
+              aria-label="Show a different intro line"
+            ><span aria-hidden="true">↻</span> cycle intro</button>
           </div>
         </div>
 
@@ -199,7 +201,7 @@ export default function Home() {
         <div className="v2-hero-foot">
           <div className="v2-foot-cell">
             <label>Currently</label>
-            <strong>AI Product Lead, <em>EntryPoint Networks</em></strong>
+            <strong>Lead Product Designer, <em>EntryPoint Networks</em></strong>
           </div>
           <div className="v2-foot-cell">
             <label>Previously</label>
@@ -207,7 +209,7 @@ export default function Home() {
           </div>
           <div className="v2-foot-cell">
             <label>Focus</label>
-            <strong>AI-governed product pipelines, B2B &amp; B2C SaaS, human-centered design</strong>
+            <strong>AI-native workflow, 5-portal B2B &amp; B2C SaaS suite, design systems</strong>
           </div>
         </div>
       </header>
@@ -216,9 +218,9 @@ export default function Home() {
       <div className="v2-marquee">
         <div className="v2-marquee-track" aria-hidden="true">
           {[
-            'AI PRODUCT DEVELOPMENT','HUMAN-CENTERED DESIGN','B2B & B2C SAAS',
+            'AI-NATIVE WORKFLOW','HUMAN-CENTERED DESIGN','B2B & B2C SAAS',
             'PROTOTYPING-FIRST','DESIGN SYSTEMS AT SCALE','FASHION → PRODUCT',
-            'AI PRODUCT DEVELOPMENT','HUMAN-CENTERED DESIGN','B2B & B2C SAAS',
+            'AI-NATIVE WORKFLOW','HUMAN-CENTERED DESIGN','B2B & B2C SAAS',
             'PROTOTYPING-FIRST','DESIGN SYSTEMS AT SCALE','FASHION → PRODUCT',
           ].map((t, i) => <span key={i}>{t}</span>)}
         </div>
@@ -292,12 +294,15 @@ export default function Home() {
 
           <div className="v2-about-center">
             <div className="v2-about-role">Hello — I'm <em>Juliana</em></div>
-            <h3 className="v2-signature">Juliana Rosario</h3>
+            <h2 className="v2-signature">Juliana Rosario</h2>
             <p className="v2-about-p1">
-              Product lead, former fashion designer, and a mom of two — based in NY/NJ, on a path that never really changed direction, just medium.
+              Product design lead with 12+ years designing for real people — first in fashion, now in software. Based in NY/NJ, and a mom of two.
             </p>
             <p className="v2-about-p2">
-              A decade in physical product — fashion, retail, global manufacturing. Then digital. Then AI. Never a pivot, just a natural progression: building things people actually want, under pressure, at scale. The industry changed. The instincts didn't.
+              At EntryPoint Networks, I lead design for an interconnected suite of five B2B and B2C SaaS portals for a fiber internet provider growing city by city. I work prototyping-first and AI-native: I direct Claude, OpenAI, Grok and Figma Make the way I once directed global production teams — clear rules, high standards, and an obsessive focus on the end user. The result: design-to-production time cut by 40%.
+            </p>
+            <p className="v2-about-p2">
+              Fashion taught me what most software designers learn the hard way: ship on a calendar that doesn't move, design to a margin, and turn a big creative vision into something people actually buy. I led a team of six at Macy's, partnered with Jennifer Lopez's styling team at Kohl's, and negotiated with vendors worldwide. I bring that same discipline to product. <em>Not a developer. An orchestrator.</em>
             </p>
             <p className="v2-about-p3">
               Off the clock, life is loud in the best way: two kids, an opinionated mini poodle named Domino, and music playing most of the time. I dance because it's fun, not because anyone's watching, and I travel whenever I can. I'm endlessly curious about why people make the choices they make — the same question that drives my design work, just without a deadline attached. I organize obsessively, mostly because it clears space to think. And I believe personal style, in a closet or in a product, is authorship, not aesthetics: what you put into the world says something. I like mine to mean something.
@@ -334,7 +339,7 @@ export default function Home() {
                   <span className="v2-tl-dot v2-tl-dot-accent" />
                   <div>
                     <span className="v2-tl-year">2023–Now</span>
-                    <span className="v2-tl-label">AI Product Lead · EntryPoint Networks</span>
+                    <span className="v2-tl-label">Lead Product Designer · EntryPoint Networks</span>
                   </div>
                 </div>
               </div>
@@ -342,7 +347,7 @@ export default function Home() {
 
             <div className="v2-scrap v2-sc-polaroid" ref={el => scrapsRef.current[0] = el}>
               <div className="v2-polaroid-img">
-                <img src="/juliana_image2.jpg" alt="Juliana Rosario" />
+                <img src="/juliana_image2.jpg" alt="Portrait of Juliana Rosario smiling in a red blazer, with the New York City skyline behind her" />
               </div>
               <div className="v2-polaroid-cap">Juliana — NY/NJ</div>
             </div>
@@ -361,10 +366,10 @@ export default function Home() {
             Open to full-time roles, fractional engagements, and conversations with teams who care about getting it right.
           </p>
           <div className="v2-contact-links">
-            <a className="v2-contact-primary" href="mailto:julianamrosario@gmail.com">julianamrosario@gmail.com →</a>
-            <a href="https://www.linkedin.com/in/julianamannionrosario" target="_blank" rel="noreferrer">LinkedIn ↗</a>
-            <a href="https://www.instagram.com/byjuliemango" target="_blank" rel="noreferrer">Instagram ↗</a>
-            <a href="/JulianaRosario_Resume.pdf" download>Resume ↓</a>
+            <a className="v2-contact-primary" href="mailto:julianamrosario@gmail.com">julianamrosario@gmail.com <span aria-hidden="true">→</span></a>
+            <a href="https://www.linkedin.com/in/julianamannionrosario" target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span><span className="sr-only"> (opens in a new tab)</span></a>
+            <a href="https://www.instagram.com/byjuliemango" target="_blank" rel="noreferrer">Instagram <span aria-hidden="true">↗</span><span className="sr-only"> (opens in a new tab)</span></a>
+            <a href="/JulianaRosario_Resume.pdf" download>Resume <span aria-hidden="true">↓</span><span className="sr-only"> — download PDF</span></a>
           </div>
         </div>
         <div className="v2-footer">
